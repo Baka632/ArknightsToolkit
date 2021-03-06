@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="ArknightsToolkit.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ArknightsToolkit"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Grid.Row="0"
+            Margin="0,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+            <Button
+                Style="{StaticResource NavigationBackButtonNormalStyle }"
+                Content="&#xE112;"
+                FontFamily="Segoe MDL2 Assets" />
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Style="{StaticResource CaptionTextBlockStyle}"
+                Text="Arknights Toolkit" />
+        </StackPanel>
+
+
+        <Frame Grid.Row="1" />
+    </Grid>
+</Page>
