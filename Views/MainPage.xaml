@@ -5,33 +5,61 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ArknightsToolkit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:service="using:ArknightsToolkit.Services"
+    xmlns:viewModels="using:ArknightsToolkit.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{x:Bind ViewModel}"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Storyboard x:Name="TitleBarTextBlockIn">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TitleBarTextBlock" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)">
+                <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="45">
+                    <SplineDoubleKeyFrame.KeySpline>
+                        <KeySpline ControlPoint1="0,1" ControlPoint2="0,1" />
+                    </SplineDoubleKeyFrame.KeySpline>
+                </SplineDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="TitleBarTextBlockOut">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TitleBarTextBlock" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)">
+                <SplineDoubleKeyFrame KeyTime="0:0:0" Value="45" />
+                <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                    <SplineDoubleKeyFrame.KeySpline>
+                        <KeySpline ControlPoint1="0,1" ControlPoint2="1,1" />
+                    </SplineDoubleKeyFrame.KeySpline>
+                </SplineDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
 
-    <Grid Background="{ThemeResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}">
+    <Grid Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="9" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <StackPanel
+        <Grid
+            x:Name="titleBarStackPanel"
             Grid.Row="0"
-            Margin="0,0,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Orientation="Horizontal">
-            <Button
-                Style="{StaticResource NavigationBackButtonNormalStyle }"
-                Content="&#xE112;"
-                FontFamily="Segoe MDL2 Assets" />
+            Grid.Column="1"
+            Margin="11,0,0,0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top">
+
             <TextBlock
-                HorizontalAlignment="Center"
+                x:Name="TitleBarTextBlock"
+                Margin="0,8,0,0"
                 VerticalAlignment="Center"
                 Style="{StaticResource CaptionTextBlockStyle}"
-                Text="Arknights Toolkit" />
-        </StackPanel>
+                Text="Arknights Toolkit">
+                <TextBlock.RenderTransform>
+                    <TranslateTransform />
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Grid>
 
-
-        <Frame Grid.Row="1" />
+        <Frame x:Name="ContentFrame" Grid.Row="2" />
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using ArknightsToolkit.Views;
+﻿using ArknightsToolkit.Services;
+using ArknightsToolkit.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -62,25 +63,6 @@ namespace ArknightsToolkit
                 // 将框架放在当前窗口中
                 Window.Current.Content = rootFrame;
             }
-
-            #region 隐藏标题栏
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
-            ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Colors.Transparent;
-            Color ForegroundColor;
-            switch (Current.RequestedTheme)
-            {
-                case ApplicationTheme.Light:
-                    ForegroundColor = Colors.Black;
-                    break;
-                case ApplicationTheme.Dark:
-                    ForegroundColor = Colors.White;
-                    break;
-                default:
-                    ForegroundColor = Colors.White;
-                    break;
-            }
-            ApplicationView.GetForCurrentView().TitleBar.ButtonForegroundColor = ForegroundColor;
-            #endregion
 
             if (e.PrelaunchActivated == false)
             {
