@@ -4,19 +4,46 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ArknightsToolkit.Views"
+    xmlns:viewmodel="using:ArknightsToolkit.ViewModels"
+    xmlns:model="using:ArknightsToolkit.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    DataContext="{x:Bind ViewModel}"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+        <Image Source="{x:Bind ViewModel.BackgroundImage,Mode=OneWay}" Opacity="0.5" Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        <GridView HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{x:Bind ViewModel.StoryButtonInfoCollection,Mode=OneWay}">
+            <GridView.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Height" Value="300" />
+                    <Setter Property="Width" Value="200" />
+                </Style>
+            </GridView.Resources>
+
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="model:StoryButtonInfomation">
+                    <StackPanel Padding="5" Height="200">
+                        <Image Height="120" Width="120" Source="{x:Bind Image,Mode=OneWay}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                        <controls:DropShadowPanel OffsetY="4">
+                            <StackPanel Background="#313131" BorderBrush="White" BorderThickness="1" Padding="5" Width="150">
+                                <TextBlock FontWeight="Medium" Text="{x:Bind Title,Mode=OneWay}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White"/>
+                            </StackPanel>
+                        </controls:DropShadowPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+        <StackPanel x:Name="stackPanel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Orientation="Vertical">
             <Image
-                Width="180"
-                Height="180"
+                Width="80"
+                Height="80"
                 Source="https://img.moegirl.org.cn/common/thumb/d/da/蚀刻章_风回大地纪念章.png/119px-蚀刻章_风回大地纪念章.png"
                 ToolTipService.ToolTip="阅读更多：明日方舟/光荣之路（https://zh.moegirl.org.cn/明日方舟/光荣之路 ）本文引自萌娘百科(https://zh.moegirl.org.cn )，文字内容默认使用《知识共享 署名-非商业性使用-相同方式共享 3.0》协议。" />
-            <TextBlock Margin="5" Style="{StaticResource SubheaderTextBlockStyle}" Text="The breeze is rewinding..." />
+            <TextBlock Margin="5" Style="{StaticResource CaptionTextBlockStyle}" FontWeight="Light" FontStyle="Italic" Text="The breeze is rewinding..." />
         </StackPanel>
     </Grid>
 </Page>

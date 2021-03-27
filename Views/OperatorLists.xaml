@@ -9,7 +9,10 @@
     DataContext="{x:Bind ViewModel}"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="{x:Bind ViewModel.BackgroundImage,Mode=OneWay}" Opacity="0.6"/>
+        </Grid.Background>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" FontSize="50" Glyph="&#xE822;" />
             <TextBlock Margin="5" Style="{StaticResource SubheaderTextBlockStyle}" Text="Still working..." />
