@@ -88,9 +88,9 @@ namespace ArknightsToolkit.Services
         public static T XmlDeserialize<T>(string s, Encoding encoding)
         {
             if (string.IsNullOrEmpty(s))
-                throw new ArgumentNullException("s");
+                throw new ArgumentNullException("String is empty");
             if (encoding == null)
-                throw new ArgumentNullException("encoding");
+                throw new ArgumentNullException("Encoding is empty");
 
             XmlSerializer mySerializer = new XmlSerializer(typeof(T));
             using (MemoryStream ms = new MemoryStream(encoding.GetBytes(s)))

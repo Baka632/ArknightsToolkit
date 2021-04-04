@@ -29,6 +29,8 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -121,7 +123,9 @@
     </Compile>
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\NavigationCommand.cs" />
+    <Compile Include="Helper\ByteArrayToBitmapImageConverter.cs" />
     <Compile Include="Helper\ByteArrayToBitmapImageExtension.cs" />
+    <Compile Include="Helper\CodenameToBitmapImageConverter.cs" />
     <Compile Include="Models\StoryButtonInfomation.cs" />
     <Compile Include="Helper\NavigationHelper.cs" />
     <Compile Include="Helper\TitleBarHelper.cs" />
@@ -156,6 +160,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\ui-star.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

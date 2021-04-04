@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage.Streams;
@@ -13,10 +14,26 @@ namespace ArknightsToolkit.Helper
     {
         public static async Task<BitmapImage> AsBitmapImageAsync(this byte[] byteArray)
         {
-            BitmapImage bmp = new BitmapImage();
-            IRandomAccessStream stream = new MemoryStream(byteArray).AsRandomAccessStream();
-            await bmp.SetSourceAsync(stream);
-            return bmp;
+            using (var stream = new InMemoryRandomAccessStream())
+            {
+                stream.WriteAsync(byteArray.AsBuffer()).GetResults();
+                stream.Seek(0);
+                BitmapImage bmp = new BitmapImage();
+                await bmp.SetSourceAsync(stream);
+                return bmp;
+            }
+        }
+
+        public static BitmapImage AsBitmapImage(this byte[] byteArray)
+        {
+            using (var stream = new InMemoryRandomAccessStream())
+            {
+                stream.WriteAsync(byteArray.AsBuffer()).GetResults();
+                stream.Seek(0);
+                BitmapImage bmp = new BitmapImage();
+                bmp.SetSource(stream);
+                return bmp;
+            }
         }
     }
 }

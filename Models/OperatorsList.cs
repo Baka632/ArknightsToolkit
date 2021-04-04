@@ -10,10 +10,10 @@ namespace ArknightsToolkit.Models
     /// <summary>
     /// 干员列表
     /// </summary>
-    [XmlRoot("OperatorsList"), XmlType("OperatorsList")]
+    [XmlRoot("OperatorsList",Namespace = "http://schema.livestudio.com/Operators.xsd"), XmlType("OperatorsList", Namespace = "http://schema.livestudio.com/Operators.xsd")]
     public class OperatorsList
     {
-        [XmlElement(ElementName = "Operator", Namespace = "http://schema.livestudio.com/Operators.xsd")]
+        [XmlElement(ElementName = "Operator")]
         public List<Operators> OperatorList { get; } = new List<Operators>();
     }
 }

@@ -62,7 +62,7 @@
                                                 <SplineDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
                                             </DoubleAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="StoryButtonImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
-                                                <SplineDoubleKeyFrame KeyTime="0:0:0" Value="-70" />
+                                                <SplineDoubleKeyFrame KeyTime="0:0:0" Value="70" />
                                                 <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0">
                                                     <SplineDoubleKeyFrame.KeySpline>
                                                         <KeySpline ControlPoint1="0,1" ControlPoint2="1,1" />

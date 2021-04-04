@@ -3,19 +3,163 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helper="using:ArknightsToolkit.Helper"
     xmlns:local="using:ArknightsToolkit.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:ArknightsToolkit.Models"
+    xmlns:viewmodel="using:ArknightsToolkit.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     DataContext="{x:Bind ViewModel}"
     mc:Ignorable="d">
+    <Page.Resources>
+        <helper:CodenameToBitmapImageConverter x:Key="CodenameToBitmapImage" />
+        <RatingItemImageInfo x:Key="OperatorStar" Image="/Assets/ui-star.png" />
+        <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="XamlAutoFontFamily" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextTrimming" Value="None" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="LineStackingStrategy" Value="MaxHeight" />
+            <Setter Property="TextLineBounds" Value="Full" />
+        </Style>
+        <Style
+            x:Key="CaptionTextBlockStyle"
+            BasedOn="{StaticResource BaseTextBlockStyle}"
+            TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Normal" />
+        </Style>
+        <Style x:Key="OperatorRatingControlStyle" TargetType="RatingControl">
+            <Setter Property="Height" Value="32" />
+            <Setter Property="Foreground" Value="{ThemeResource RatingControlCaptionForeground}" />
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+            <Setter Property="ItemInfo" Value="{StaticResource OperatorStar}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RatingControl">
+                        <Grid x:Name="LayoutRoot">
+                            <StackPanel
+                                Grid.Row="0"
+                                Margin="-20,-20,-20,-20"
+                                Orientation="Horizontal">
+                                <StackPanel
+                                    x:Name="RatingBackgroundStackPanel"
+                                    Margin="20,20,0,20"
+                                    Background="Transparent"
+                                    Orientation="Horizontal" />
+                                <TextBlock
+                                    x:Name="Caption"
+                                    Height="32"
+                                    Margin="4,9,20,0"
+                                    VerticalAlignment="Center"
+                                    AutomationProperties.AccessibilityView="Raw"
+                                    AutomationProperties.Name="RatingCaption"
+                                    IsHitTestVisible="False"
+                                    Style="{ThemeResource CaptionTextBlockStyle}"
+                                    Text="{TemplateBinding Caption}"
+                                    TextLineBounds="TrimToBaseline" />
+                            </StackPanel>
+                            <ContentPresenter
+                                x:Name="ForegroundContentPresenter"
+                                Grid.Row="0"
+                                IsHitTestVisible="False">
+                                <StackPanel Margin="-40,-40,-40,-40" Orientation="Horizontal">
+                                    <StackPanel
+                                        x:Name="RatingForegroundStackPanel"
+                                        Margin="40,40,40,40"
+                                        IsHitTestVisible="False"
+                                        Orientation="Horizontal" />
+                                </StackPanel>
+                            </ContentPresenter>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Disabled">
+                                        <VisualState.Setters>
+                                            <Setter Target="ForegroundContentPresenter.Foreground" Value="{ThemeResource RatingControlDisabledSelectedForeground}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Placeholder">
+                                        <VisualState.Setters>
+                                            <Setter Target="ForegroundContentPresenter.Foreground" Value="{ThemeResource RatingControlPlaceholderForeground}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOverPlaceholder">
+                                        <VisualState.Setters>
+                                            <Setter Target="ForegroundContentPresenter.Foreground" Value="{ThemeResource RatingControlPointerOverPlaceholderForeground}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOverUnselected">
+                                        <VisualState.Setters>
+                                            <Setter Target="ForegroundContentPresenter.Foreground" Value="{ThemeResource RatingControlPointerOverUnselectedForeground}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Set">
+                                        <VisualState.Setters>
+                                            <Setter Target="ForegroundContentPresenter.Foreground" Value="{ThemeResource RatingControlSelectedForeground}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOverSet">
+                                        <VisualState.Setters>
+                                            <Setter Target="ForegroundContentPresenter.Foreground" Value="{ThemeResource RatingControlSelectedForeground}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="{x:Bind ViewModel.BackgroundImage,Mode=OneWay}" Opacity="0.6"/>
+            <ImageBrush
+                ImageSource="{x:Bind ViewModel.BackgroundImage, Mode=OneWay}"
+                Opacity="0.6"
+                Stretch="UniformToFill" />
         </Grid.Background>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" FontSize="50" Glyph="&#xE822;" />
-            <TextBlock Margin="5" Style="{StaticResource SubheaderTextBlockStyle}" Text="Still working..." />
-        </StackPanel>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            Margin="11,0,0,0"
+            Style="{StaticResource HeaderTextBlockStyle}"
+            Text="干员图鉴" />
+        <GridView
+            Grid.Row="1"
+            Margin="11,10,0,0"
+            ItemsSource="{x:Bind ViewModel.OperatorsList, Mode=OneWay}">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="model:Operators">
+                    <Grid Width="200" Height="250">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+
+                        <RatingControl
+                            Grid.Row="0"
+                            IsEnabled="False"
+                            Style="{StaticResource OperatorRatingControlStyle}"
+                            Value="{x:Bind Star}" />
+                        <Image
+                            Grid.Row="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Source="{x:Bind ImageCodename, Mode=OneWay, Converter={StaticResource CodenameToBitmapImage}}"
+                            Stretch="Uniform" />
+                        <TextBlock Grid.Row="2" Text="{x:Bind Name}" />
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </Page>
