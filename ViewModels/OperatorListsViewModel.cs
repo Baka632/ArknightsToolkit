@@ -27,7 +27,7 @@ namespace ArknightsToolkit.ViewModels
 
             async void SetBackgroundImage()
             {
-                BackgroundImage = await Resources.Properties.Resources.operator_background.AsBitmapImageAsync();
+                BackgroundImage = await Resources.Resource.background_operators.AsBitmapImageAsync();
             }
         }
     }

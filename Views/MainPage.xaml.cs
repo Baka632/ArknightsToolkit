@@ -1,4 +1,5 @@
-﻿using ArknightsToolkit.Models;
+﻿using ArknightsToolkit.Helper;
+using ArknightsToolkit.Models;
 using ArknightsToolkit.Services;
 using ArknightsToolkit.ViewModels;
 using System;
@@ -37,10 +38,10 @@ namespace ArknightsToolkit.Views
         {
             this.InitializeComponent();
             ViewModel = new MainPageViewModel(ContentFrame);
-            TitleBarService.BackButtonVisibilityChangedEvent += TitleBarService_BackButtonVisibilityChangedEvent;
+            TitleBarHelper.BackButtonVisibilityChangedEvent += TitleBarHelper_BackButtonVisibilityChangedEvent;
         }
 
-        private void TitleBarService_BackButtonVisibilityChangedEvent(BackButtonVisibilityChangedEventArgs args)
+        private void TitleBarHelper_BackButtonVisibilityChangedEvent(BackButtonVisibilityChangedEventArgs args)
         {
             StartTitleBarAnimation(args.BackButtonVisibility);
         }

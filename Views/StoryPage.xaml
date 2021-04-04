@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ArknightsToolkit.Views"
     xmlns:viewmodel="using:ArknightsToolkit.ViewModels"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     xmlns:model="using:ArknightsToolkit.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
@@ -14,7 +15,7 @@
     <Grid Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
         <Image Source="{x:Bind ViewModel.BackgroundImage,Mode=OneWay}" Opacity="0.5" Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-        <GridView HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{x:Bind ViewModel.StoryButtonInfoCollection,Mode=OneWay}">
+        <GridView x:Name="StoryButtonGridView" animations:ItemsReorderAnimation.Duration="00:00:0.5" Margin="7,0,7,0" HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{x:Bind ViewModel.StoryButtonInfoCollection,Mode=OneWay}">
             <GridView.Resources>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="Transparent"/>
@@ -23,10 +24,57 @@
                 </Style>
             </GridView.Resources>
 
+            <GridView.Triggers>
+                <EventTrigger>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="StoryButtonGridView" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)">
+                                <SplineDoubleKeyFrame KeyTime="0:0:0" Value="-500" />
+                                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0">
+                                    <SplineDoubleKeyFrame.KeySpline>
+                                        <KeySpline ControlPoint1="0,1" ControlPoint2="0,1" />
+                                    </SplineDoubleKeyFrame.KeySpline>
+                                </SplineDoubleKeyFrame>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </GridView.Triggers>
+
+            <GridView.RenderTransform>
+                <TranslateTransform />
+            </GridView.RenderTransform>
+
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="model:StoryButtonInfomation">
                     <StackPanel Padding="5" Height="200">
-                        <Image Height="120" Width="120" Source="{x:Bind Image,Mode=OneWay}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                        <Image x:Name="StoryButtonImage" Height="120" Width="120" Source="{x:Bind Image,Mode=OneWay}" VerticalAlignment="Top" HorizontalAlignment="Center">
+                            <Image.RenderTransform>
+                                <TranslateTransform />
+                            </Image.RenderTransform>
+                            <Image.Triggers>
+                                <EventTrigger>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="StoryButtonImage" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+                                                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="StoryButtonImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
+                                                <SplineDoubleKeyFrame KeyTime="0:0:0" Value="-70" />
+                                                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0">
+                                                    <SplineDoubleKeyFrame.KeySpline>
+                                                        <KeySpline ControlPoint1="0,1" ControlPoint2="1,1" />
+                                                    </SplineDoubleKeyFrame.KeySpline>
+                                                </SplineDoubleKeyFrame>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        
                         <controls:DropShadowPanel OffsetY="4">
                             <StackPanel Background="#313131" BorderBrush="White" BorderThickness="1" Padding="5" Width="150">
                                 <TextBlock FontWeight="Medium" Text="{x:Bind Title,Mode=OneWay}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White"/>
@@ -37,7 +85,7 @@
             </GridView.ItemTemplate>
         </GridView>
 
-        <StackPanel x:Name="stackPanel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Orientation="Vertical">
+        <StackPanel Opacity="0.2" x:Name="stackPanel" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
             <Image
                 Width="80"
                 Height="80"

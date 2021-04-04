@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
 
-namespace ArknightsToolkit.Services
+namespace ArknightsToolkit.Helper
 {
-    static class NavigationService
+    static class NavigationHelper
     {
         public static Frame CurrentFrame { get; set; }
         public static SystemNavigationManager NavigationManager { get; } = SystemNavigationManager.GetForCurrentView();
 
-        static NavigationService()
+        static NavigationHelper()
         {
             NavigationManager.BackRequested += BackRequested;
         }
@@ -37,9 +38,9 @@ namespace ArknightsToolkit.Services
             }
         }
 
-        public static void Navigate(Type sourcePageType,object parameter)
+        public static void Navigate(Type sourcePageType,object parameter,NavigationTransitionInfo transitionInfo = null)
         {
-            CurrentFrame.Navigate(sourcePageType,parameter);
+            CurrentFrame.Navigate(sourcePageType, parameter, transitionInfo);
         }
     }
 }

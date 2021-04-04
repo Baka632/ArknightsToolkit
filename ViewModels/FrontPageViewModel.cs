@@ -19,8 +19,8 @@ namespace ArknightsToolkit.ViewModels
     {
         private BitmapImage tapeImage;
 
-        public DelegateCommand NavigateToOperatorsCommand { get; set; } = new DelegateCommand();
-        public DelegateCommand NavigateToStoryPageCommand { get; set; } = new DelegateCommand();
+        public NavigationCommand NavigateToOperatorsCommand { get; set; } = new NavigationCommand(typeof(OperatorLists), null);
+        public NavigationCommand NavigateToStoryPageCommand { get; set; } = new NavigationCommand(typeof(StoryPage), null);
         public BitmapImage TapeImage
         {
             get => tapeImage;
@@ -34,24 +34,12 @@ namespace ArknightsToolkit.ViewModels
 
         public FrontPageViewModel()
         {
-            NavigateToOperatorsCommand.ExecuteAction = NavigateToOperatorsList;
-            NavigateToStoryPageCommand.ExecuteAction = NavigateToStoryPage;
             SetTapeImage();
 
             async void SetTapeImage()
             {
-                TapeImage = await Resources.Properties.Resources.story_tape.AsBitmapImageAsync();
+                TapeImage = await Resources.Resource.ui_tape.AsBitmapImageAsync();
             }
-        }
-
-        private void NavigateToStoryPage(object obj)
-        {
-            NavigationService.Navigate(typeof(StoryPage), null);
-        }
-
-        private void NavigateToOperatorsList(object obj)
-        {
-            NavigationService.Navigate(typeof(OperatorLists), null);
         }
     }
 }

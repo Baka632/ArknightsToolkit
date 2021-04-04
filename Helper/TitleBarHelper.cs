@@ -11,16 +11,16 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace ArknightsToolkit.Services
+namespace ArknightsToolkit.Helper
 {
-    class TitleBarService
+    class TitleBarHelper
     {
         public ApplicationViewTitleBar PresentationTitleBar { get; } = ApplicationView.GetForCurrentView().TitleBar;
         public SystemNavigationManager NavigationManager { get; } = SystemNavigationManager.GetForCurrentView();
         public Frame CurrentFrame { get; }
         public static event Action<BackButtonVisibilityChangedEventArgs> BackButtonVisibilityChangedEvent;
 
-        public TitleBarService(Frame frame)
+        public TitleBarHelper(Frame frame)
         {
             #region TitleBarColor
             PresentationTitleBar.ButtonBackgroundColor = Colors.Transparent;

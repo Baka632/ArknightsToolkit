@@ -28,11 +28,11 @@ namespace ArknightsToolkit.ViewModels
 
         public StoryPageViewModel()
         {
-            SetImages();
+            Initialize();
 
-            async void SetImages()
+            async void Initialize()
             {
-                BackgroundImage = await Resources.Properties.Resources.story_bg3.AsBitmapImageAsync();
+                BackgroundImage = await Resources.Resource.ui_story_background3.AsBitmapImageAsync();
                 #region InitializeCollection
                 StoryButtonInfoCollection.Add(new StoryButtonInfomation()
                 {
@@ -49,7 +49,7 @@ namespace ArknightsToolkit.ViewModels
                 StoryButtonInfoCollection.Add(new StoryButtonInfomation()
                 {
                     Title = "故事集",
-                    Image = await Resources.Properties.Resources.story_storiescollection.AsBitmapImageAsync(),
+                    Image = await Resources.Resource.ui_records.AsBitmapImageAsync(),
                     Command = null
                 });
                 StoryButtonInfoCollection.Add(new StoryButtonInfomation()

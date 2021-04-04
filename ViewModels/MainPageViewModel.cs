@@ -1,4 +1,5 @@
-﻿using ArknightsToolkit.Services;
+﻿using ArknightsToolkit.Helper;
+using ArknightsToolkit.Services;
 using ArknightsToolkit.Views;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,13 @@ namespace ArknightsToolkit.ViewModels
 {
     class MainPageViewModel : NotificationObject
     {
-        public TitleBarService TitleBarService { get; }
+        public TitleBarHelper TitleBarHelper { get; }
 
         public MainPageViewModel(Frame frame)
         {
-            TitleBarService = new TitleBarService(frame);
-            NavigationService.CurrentFrame = frame;
-            NavigationService.Navigate(typeof(FrontPage), null);
+            TitleBarHelper = new TitleBarHelper(frame);
+            NavigationHelper.CurrentFrame = frame;
+            NavigationHelper.Navigate(typeof(FrontPage), null);
         }
     }
 }
