@@ -15,28 +15,16 @@ namespace ArknightsToolkit.ViewModels
 {
     class OperatorListsViewModel : NotificationObject
     {
-        private BitmapImage backgroundImage;
 
-        public BitmapImage BackgroundImage
-        {
-            get => backgroundImage;
-            set
-            {
-                backgroundImage = value;
-                OnPropertiesChanged();
-            }
-        }
+        public BitmapImage BackgroundImage { get; } = Resources.Resource.background_operators.AsBitmapImage();
+
+        public BitmapImage AmiyaBackground { get; } = Resources.Resource.ui_amiya_bg.AsBitmapImage();
 
         public List<Operators> OperatorsList { get; } = XmlService.XmlDeserialize<OperatorsList>(Resources.Resource.Operators, Encoding.UTF8).OperatorList;
 
         public OperatorListsViewModel()
         {
-            SetBackgroundImage();
 
-            async void SetBackgroundImage()
-            {
-                BackgroundImage = await Resources.Resource.background_operators.AsBitmapImageAsync();
-            }
         }
     }
 }

@@ -2,23 +2,34 @@
     x:Class="ArknightsToolkit.Views.StoryPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ArknightsToolkit.Views"
-    xmlns:viewmodel="using:ArknightsToolkit.ViewModels"
-    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
-    xmlns:model="using:ArknightsToolkit.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:model="using:ArknightsToolkit.Models"
+    xmlns:viewmodel="using:ArknightsToolkit.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
-        <Image Source="{x:Bind ViewModel.BackgroundImage,Mode=OneWay}" Opacity="0.5" Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Image
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Opacity="0.5"
+            Source="{x:Bind ViewModel.BackgroundImage, Mode=OneWay}"
+            Stretch="UniformToFill" />
 
-        <GridView x:Name="StoryButtonGridView" animations:ItemsReorderAnimation.Duration="00:00:0.5" Margin="7,0,7,0" HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{x:Bind ViewModel.StoryButtonInfoCollection,Mode=OneWay}">
+        <GridView
+            x:Name="StoryButtonGridView"
+            Margin="7,0,7,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            animations:ItemsReorderAnimation.Duration="00:00:0.5"
+            ItemsSource="{x:Bind ViewModel.StoryButtonInfoCollection, Mode=OneWay}">
             <GridView.Resources>
                 <Style TargetType="Button">
-                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Background" Value="Transparent" />
                     <Setter Property="Height" Value="300" />
                     <Setter Property="Width" Value="200" />
                 </Style>
@@ -47,8 +58,14 @@
 
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="model:StoryButtonInfomation">
-                    <StackPanel Padding="5" Height="200">
-                        <Image x:Name="StoryButtonImage" Height="120" Width="120" Source="{x:Bind Image,Mode=OneWay}" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <StackPanel Height="200" Padding="5">
+                        <Image
+                            x:Name="StoryButtonImage"
+                            Width="120"
+                            Height="120"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Source="{x:Bind Image, Mode=OneWay}">
                             <Image.RenderTransform>
                                 <TranslateTransform />
                             </Image.RenderTransform>
@@ -59,7 +76,7 @@
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="StoryButtonImage" Storyboard.TargetProperty="(UIElement.Opacity)">
                                                 <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0" />
                                                 <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
-                                                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                                                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="1" />
                                             </DoubleAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="StoryButtonImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
                                                 <SplineDoubleKeyFrame KeyTime="0:0:0" Value="70" />
@@ -74,10 +91,20 @@
                                 </EventTrigger>
                             </Image.Triggers>
                         </Image>
-                        
+
                         <controls:DropShadowPanel OffsetY="4">
-                            <StackPanel Background="#313131" BorderBrush="White" BorderThickness="1" Padding="5" Width="150">
-                                <TextBlock FontWeight="Medium" Text="{x:Bind Title,Mode=OneWay}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White"/>
+                            <StackPanel
+                                Width="150"
+                                Padding="5"
+                                Background="#313131"
+                                BorderBrush="White"
+                                BorderThickness="1">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Bottom"
+                                    FontWeight="Medium"
+                                    Foreground="White"
+                                    Text="{x:Bind Title, Mode=OneWay}" />
                             </StackPanel>
                         </controls:DropShadowPanel>
                     </StackPanel>
@@ -85,13 +112,14 @@
             </GridView.ItemTemplate>
         </GridView>
 
-        <StackPanel Opacity="0.2" x:Name="stackPanel" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
-            <Image
-                Width="80"
-                Height="80"
-                Source="https://img.moegirl.org.cn/common/thumb/d/da/蚀刻章_风回大地纪念章.png/119px-蚀刻章_风回大地纪念章.png"
-                ToolTipService.ToolTip="阅读更多：明日方舟/光荣之路（https://zh.moegirl.org.cn/明日方舟/光荣之路 ）本文引自萌娘百科(https://zh.moegirl.org.cn )，文字内容默认使用《知识共享 署名-非商业性使用-相同方式共享 3.0》协议。" />
-            <TextBlock Margin="5" Style="{StaticResource CaptionTextBlockStyle}" FontWeight="Light" FontStyle="Italic" Text="The breeze is rewinding..." />
+        <StackPanel Margin="11,0,0,0">
+            <TextBlock Grid.Row="0" Style="{StaticResource HeaderTextBlockStyle}" Text="游戏剧情" />
+            <TextBlock
+                FontSize="20"
+                FontStyle="Italic"
+                FontWeight="Light"
+                Style="{StaticResource CaptionTextBlockStyle}"
+                Text="The breeze is rewinding..." />
         </StackPanel>
     </Grid>
 </Page>

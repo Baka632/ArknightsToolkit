@@ -37,13 +37,13 @@ namespace ArknightsToolkit.ViewModels
                 StoryButtonInfoCollection.Add(new StoryButtonInfomation()
                 {
                     Title = "主线剧情",
-                    Image = null,
+                    Image = await Resources.Resource.ui_missing.AsBitmapImageAsync(),
                     Command = null
                 });
                 StoryButtonInfoCollection.Add(new StoryButtonInfomation()
                 {
                     Title = "Side Story剧情",
-                    Image = null,
+                    Image = await Resources.Resource.ui_missing.AsBitmapImageAsync(),
                     Command = null
                 });
                 StoryButtonInfoCollection.Add(new StoryButtonInfomation()
@@ -55,7 +55,7 @@ namespace ArknightsToolkit.ViewModels
                 StoryButtonInfoCollection.Add(new StoryButtonInfomation()
                 {
                     Title = "其他",
-                    Image = null,
+                    Image = await Resources.Resource.ui_missing.AsBitmapImageAsync(),
                     Command = null
                 });
                 #endregion

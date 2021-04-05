@@ -29,5 +29,15 @@ namespace ArknightsToolkit.Views
             this.InitializeComponent();
             ViewModel = new OperatorListsViewModel();
         }
+
+        private void TextBlock_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            InAmiyaBackgroundStoryboard.Begin();
+        }
+
+        private void TextBlock_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            OutAmiyaBackgroundStoryboard.Begin();
+        }
     }
 }

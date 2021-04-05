@@ -126,6 +126,7 @@
     <Compile Include="Helper\ByteArrayToBitmapImageConverter.cs" />
     <Compile Include="Helper\ByteArrayToBitmapImageExtension.cs" />
     <Compile Include="Helper\CodenameToBitmapImageConverter.cs" />
+    <Compile Include="Helper\OperatorClassToBitmapImageConverter.cs" />
     <Compile Include="Models\StoryButtonInfomation.cs" />
     <Compile Include="Helper\NavigationHelper.cs" />
     <Compile Include="Helper\TitleBarHelper.cs" />
