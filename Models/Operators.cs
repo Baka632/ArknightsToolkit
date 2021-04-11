@@ -53,5 +53,10 @@ namespace ArknightsToolkit.Models
         /// 干员性别
         /// </summary>
         public OperatorsSex Sex { get; set; }
+
+        public override string ToString()
+        {
+            return $"干员名={Name} 星级={Star} 立绘图代号={ImageCodename}";
+        }
     }
 }

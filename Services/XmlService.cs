@@ -13,12 +13,6 @@ namespace ArknightsToolkit.Services
 {
     public class XmlService
     {
-        //public List<Operators> GetOperatorsListFromXml(XmlDocument xml)
-        //{
-        //    Xmlhelp
-        //     return null;
-        //}
-
         private static void XmlSerializeInternal(Stream stream, object o, Encoding encoding)
         {
             if (o == null)

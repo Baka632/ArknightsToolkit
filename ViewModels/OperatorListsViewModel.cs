@@ -1,6 +1,7 @@
 ﻿using ArknightsToolkit.Helper;
 using ArknightsToolkit.Models;
 using ArknightsToolkit.Services;
+using Microsoft.Toolkit.Uwp;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,11 +21,13 @@ namespace ArknightsToolkit.ViewModels
 
         public BitmapImage AmiyaBackground { get; } = Resources.Resource.ui_amiya_bg.AsBitmapImage();
 
-        public List<Operators> OperatorsList { get; } = XmlService.XmlDeserialize<OperatorsList>(Resources.Resource.Operators, Encoding.UTF8).OperatorList;
+        //看以后情况
+        public IncrementalLoadingCollection<OperatorsList,Operators> OperatorsList { get; }
+        //public List<Operators> OperatorsList { get; private set; }
 
         public OperatorListsViewModel()
         {
-
+            OperatorsList = new IncrementalLoadingCollection<OperatorsList, Operators>();
         }
     }
 }

@@ -153,30 +153,15 @@
             animations:ItemsReorderAnimation.Duration="00:00:0.5"
             ItemsSource="{x:Bind ViewModel.OperatorsList, Mode=OneWay}">
 
-            <GridView.RenderTransform>
-                <TranslateTransform />
-            </GridView.RenderTransform>
-
-            <GridView.Triggers>
-                <EventTrigger>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="OperatorListGridView" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)">
-                                <SplineDoubleKeyFrame KeyTime="0:0:0" Value="-500" />
-                                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0">
-                                    <SplineDoubleKeyFrame.KeySpline>
-                                        <KeySpline ControlPoint1="0,1" ControlPoint2="0,1" />
-                                    </SplineDoubleKeyFrame.KeySpline>
-                                </SplineDoubleKeyFrame>
-                            </DoubleAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </GridView.Triggers>
+            <GridView.ItemContainerTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition IsStaggeringEnabled="True" />
+                </TransitionCollection>
+            </GridView.ItemContainerTransitions>
 
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="model:Operators">
-                    <Grid Width="200" Height="250" Padding="10">
+                    <Grid Width="200" Height="250" Padding="10" CanDrag="True">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition />
@@ -184,15 +169,18 @@
                         </Grid.RowDefinitions>
 
                         <RatingControl
+                            MaxRating="{x:Bind Star}"
                             Grid.Row="0"
                             IsEnabled="False"
                             Style="{StaticResource OperatorRatingControlStyle}"
+                            x:Phase="1"
                             Value="{x:Bind Star}" />
                         <Image
                             Grid.Row="1"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Source="{x:Bind ImageCodename, Mode=OneWay, Converter={StaticResource CodenameToBitmapImage}}"
+                            x:Phase="2"
+                            Source="{x:Bind ImageCodename, Converter={StaticResource CodenameToBitmapImage}}"
                             Stretch="Uniform" />
 
                         <Grid Grid.Row="2">
@@ -202,12 +190,14 @@
                                 FontSize="15"
                                 RequestedTheme="Dark"
                                 Style="{StaticResource BaseTextBlockStyle}"
+                                x:Phase="0"
                                 Text="{x:Bind Name}" />
                             <Image
                                 Width="30"
                                 Height="30"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
+                                x:Phase="2"
                                 Source="{x:Bind OperatorClass, Converter={StaticResource OperatorClassToBitmapImage}}" />
                         </Grid>
                     </Grid>
