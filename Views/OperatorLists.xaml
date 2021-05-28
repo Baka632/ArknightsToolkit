@@ -5,6 +5,7 @@
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helper="using:ArknightsToolkit.Helper"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:local="using:ArknightsToolkit.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="using:ArknightsToolkit.Models"
@@ -117,6 +118,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -146,21 +148,52 @@
             </Image.RenderTransform>
         </Image>
 
+        <Grid Margin="11,10,0,0" Grid.Row="1">
+            <CommandBar Grid.Column="0" HorizontalAlignment="Left" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+                <CommandBar.Resources>
+                    <helper:OperatorComparerOption x:Key="SortUp">
+                        Normal
+                    </helper:OperatorComparerOption>
+                    <helper:OperatorComparerOption x:Key="SortReverse">
+                        Reverse
+                    </helper:OperatorComparerOption>
+                </CommandBar.Resources>
+
+                <AppBarButton Icon="Up" Label="名称升序" Command="{x:Bind ViewModel.CompareByName,Mode=OneWay}" CommandParameter="{StaticResource SortUp}"/>
+                <AppBarButton Label="名称降序" Command="{x:Bind ViewModel.CompareByName,Mode=OneWay}" CommandParameter="{StaticResource SortReverse}">
+                    <AppBarButton.Icon>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE74B;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
+                <AppBarSeparator/>
+
+                <AppBarButton Icon="Up" Label="稀有度升序" Command="{x:Bind ViewModel.CompareByStarCount,Mode=OneWay}" CommandParameter="{StaticResource SortUp}"/>
+                <AppBarButton Label="稀有度降序" Command="{x:Bind ViewModel.CompareByStarCount,Mode=OneWay}" CommandParameter="{StaticResource SortReverse}">
+                    <AppBarButton.Icon>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE74B;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+            </CommandBar>
+
+            <AutoSuggestBox Margin="11,0,50,0" PlaceholderText="搜索干员名称" HorizontalAlignment="Right" Grid.Column="2" VerticalAlignment="Center" Width="Auto" MinWidth="150" QueryIcon="Find"/>
+        </Grid>
+        
         <GridView
             x:Name="OperatorListGridView"
-            Grid.Row="1"
+            Grid.Row="2"
             Margin="11,10,0,0"
             animations:ItemsReorderAnimation.Duration="00:00:0.5"
+            SelectionMode="None"
             ItemsSource="{x:Bind ViewModel.OperatorsList, Mode=OneWay}">
-
             <GridView.ItemContainerTransitions>
                 <TransitionCollection>
-                    <EntranceThemeTransition IsStaggeringEnabled="True" />
+                    <ContentThemeTransition  />
                 </TransitionCollection>
             </GridView.ItemContainerTransitions>
 
             <GridView.ItemTemplate>
-                <DataTemplate x:DataType="model:Operators">
+                <DataTemplate x:DataType="model:Operator">
                     <Grid Width="200" Height="250" Padding="10" CanDrag="True">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -180,8 +213,8 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             x:Phase="2"
-                            Source="{x:Bind ImageCodename, Converter={StaticResource CodenameToBitmapImage}}"
-                            Stretch="Uniform" />
+                            Source="{x:Bind helper:GetInfomationFromListOfOperatorInfoHelper.GetOperatorImageFromList(Children)}"
+                            Stretch="Uniform"/>
 
                         <Grid Grid.Row="2">
                             <TextBlock
@@ -198,7 +231,7 @@
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 x:Phase="2"
-                                Source="{x:Bind OperatorClass, Converter={StaticResource OperatorClassToBitmapImage}}" />
+                                Source="{x:Bind helper:GetInfomationFromListOfOperatorInfoHelper.GetOperatorClassImageFromList(Children)}" />
                         </Grid>
                     </Grid>
                 </DataTemplate>

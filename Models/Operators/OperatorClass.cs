@@ -10,7 +10,7 @@ namespace ArknightsToolkit.Models
     /// <summary>
     /// 干员职业的枚举
     /// </summary>
-    public enum OperatorsClass
+    public enum OperatorClass
     {
 
         /// <summary>

@@ -18,7 +18,7 @@ namespace ArknightsToolkit.Helper
         {
             switch (value)
             {
-                case OperatorsClass operatorsClass:
+                case OperatorClass operatorsClass:
                     byte[] imageArray = (byte[])Resources.Resource.ResourceManager.GetObject($"ui_{operatorsClass.ToString().ToLower()}");
                     return imageArray.AsBitmapImage();
                 default:

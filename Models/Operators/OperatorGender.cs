@@ -10,7 +10,7 @@ namespace ArknightsToolkit.Models
     /// <summary>
     /// 干员性别
     /// </summary>
-    public enum OperatorsSex
+    public enum OperatorGender
     {
         /// <summary>
         /// 男性

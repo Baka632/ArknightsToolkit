@@ -126,12 +126,20 @@
     <Compile Include="Helper\ByteArrayToBitmapImageConverter.cs" />
     <Compile Include="Helper\ByteArrayToBitmapImageExtension.cs" />
     <Compile Include="Helper\CodenameToBitmapImageConverter.cs" />
+    <Compile Include="Helper\CodenameToBitmapImageExtension.cs" />
+    <Compile Include="Helper\GetInfomationFromListOfOperatorInfoHelper.cs" />
     <Compile Include="Helper\OperatorClassToBitmapImageConverter.cs" />
+    <Compile Include="Helper\OperatorComparer.cs" />
+    <Compile Include="Helper\OperatorComparerOption.cs" />
+    <Compile Include="Models\Operators\OperatorChildren.cs" />
+    <Compile Include="Models\Operators\OperatorInfo.cs" />
+    <Compile Include="Models\Operators\OperatorType.cs" />
     <Compile Include="Models\StoryButtonInfomation.cs" />
     <Compile Include="Helper\NavigationHelper.cs" />
     <Compile Include="Helper\TitleBarHelper.cs" />
     <Compile Include="ViewModels\FrontPageViewModel.cs" />
     <Compile Include="ViewModels\NotificationObject.cs" />
+    <Compile Include="ViewModels\OperatorDetailsViewModel.cs" />
     <Compile Include="ViewModels\OperatorListsViewModel.cs" />
     <Compile Include="ViewModels\StoryPageViewModel.cs" />
     <Compile Include="Views\FrontPage.xaml.cs">
@@ -140,14 +148,17 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\OperatorsBirthday.cs" />
-    <Compile Include="Models\Operators.cs" />
-    <Compile Include="Models\OperatorsClass.cs" />
-    <Compile Include="Models\OperatorsSex.cs" />
-    <Compile Include="Models\OperatorsList.cs" />
+    <Compile Include="Models\Operators\OperatorBirthday.cs" />
+    <Compile Include="Models\Operators\Operator.cs" />
+    <Compile Include="Models\Operators\OperatorClass.cs" />
+    <Compile Include="Models\Operators\OperatorGender.cs" />
+    <Compile Include="Models\Operators\OperatorsList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\XmlService.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="Views\OperatorDetails.xaml.cs">
+      <DependentUpon>OperatorDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\OperatorLists.xaml.cs">
       <DependentUpon>OperatorLists.xaml</DependentUpon>
     </Compile>
@@ -183,6 +194,10 @@
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OperatorDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\OperatorLists.xaml">
       <SubType>Designer</SubType>
