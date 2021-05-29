@@ -24,7 +24,7 @@ namespace ArknightsToolkit.Models
         /// <summary>
         /// 干员职业
         /// </summary>
-        [XmlAttribute]
+        [XmlAttribute("OperatorClass")]
         public OperatorClass Class { get; set; }
 
         public OperatorInfo()
