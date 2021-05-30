@@ -16,13 +16,15 @@ namespace ArknightsToolkit.Helper
 
         public static BitmapImage GetOperatorImageFromList(OperatorChildren children)
         {
-            IEnumerable<string> temp = from OperatorInfo info in children.ChildList where info.Type == OperatorType select info.ImageCodename;
+            List<string> temp = (from OperatorInfo info in children.ChildList where info.Type == OperatorType select info.ImageCodename).ToList();
+            OperatorType = OperatorType.Elite0;
             return temp.First().ToOperatorImage();
         }
 
         public static BitmapImage GetOperatorClassImageFromList(OperatorChildren children)
         {
-            IEnumerable<OperatorClass> temp = from OperatorInfo info in children.ChildList where info.Type == OperatorType select info.Class;
+            List<OperatorClass> temp = (from OperatorInfo info in children.ChildList where info.Type == OperatorType select info.Class).ToList();
+            OperatorType = OperatorType.Elite0;
             return temp.First().ToClassImage();
         }
     }

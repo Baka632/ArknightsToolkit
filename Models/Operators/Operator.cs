@@ -1,7 +1,10 @@
 ﻿using ArknightsToolkit.Models.Operators;
+using ArknightsToolkit.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -11,7 +14,7 @@ namespace ArknightsToolkit.Models
     /// <summary>
     /// 表示干员的类
     /// </summary>
-    public class Operator
+    public class Operator : INotifyPropertyChanged
     {
         /// <summary>
         /// 名字
@@ -40,8 +43,15 @@ namespace ArknightsToolkit.Models
 
         public Operator()
         {
-
+            OperatorDetailsViewModel.OperatorTypeChanged += OnOperatorTypeChanged;
         }
+
+        private void OnOperatorTypeChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Children)));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public override string ToString()
         {

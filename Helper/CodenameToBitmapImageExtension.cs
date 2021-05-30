@@ -24,6 +24,7 @@ namespace ArknightsToolkit.Helper
                 return bmp;
             }
         }
+
         public static BitmapImage ToClassImage(this OperatorClass value)
         {
             byte[] imageArray = (byte[])Resources.Resource.ResourceManager.GetObject($"ui_{value.ToString().ToLower()}");

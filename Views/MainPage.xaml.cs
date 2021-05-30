@@ -33,6 +33,7 @@ namespace ArknightsToolkit.Views
     public sealed partial class MainPage : Page
     {
         private MainPageViewModel ViewModel { get; }
+        private bool IsTitleBarTextBlockInBegun = false;
 
         public MainPage()
         {
@@ -50,14 +51,18 @@ namespace ArknightsToolkit.Views
         {
             switch (buttonVisibility)
             {
+                case AppViewBackButtonVisibility.Disabled:
                 case AppViewBackButtonVisibility.Visible:
+                    if (IsTitleBarTextBlockInBegun)
+                    {
+                        goto default;
+                    }
                     TitleBarTextBlockIn.Begin();
+                    IsTitleBarTextBlockInBegun = true;
                     break;
                 case AppViewBackButtonVisibility.Collapsed:
                     TitleBarTextBlockOut.Begin();
-                    break;
-                case AppViewBackButtonVisibility.Disabled:
-                    TitleBarTextBlockIn.Begin();
+                    IsTitleBarTextBlockInBegun = false;
                     break;
                 default:
                     break;

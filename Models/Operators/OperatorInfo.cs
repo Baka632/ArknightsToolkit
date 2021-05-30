@@ -10,7 +10,7 @@ namespace ArknightsToolkit.Models
     /// <summary>
     /// 表示干员信息的结构
     /// </summary>
-    public class OperatorInfo
+    public struct OperatorInfo
     {
         [XmlAttribute]
         public OperatorType Type { get; set; }
@@ -27,9 +27,9 @@ namespace ArknightsToolkit.Models
         [XmlAttribute("OperatorClass")]
         public OperatorClass Class { get; set; }
 
-        public OperatorInfo()
-        {
-
-        }
+        /// <summary>
+        /// 干员档案
+        /// </summary>
+        public string Profile { get; set; }
     }
 }

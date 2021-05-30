@@ -125,12 +125,13 @@
     <Compile Include="Commands\NavigationCommand.cs" />
     <Compile Include="Helper\ByteArrayToBitmapImageConverter.cs" />
     <Compile Include="Helper\ByteArrayToBitmapImageExtension.cs" />
-    <Compile Include="Helper\CodenameToBitmapImageConverter.cs" />
+    <Compile Include="Helper\OperatorChildrenToOperatorImageConverter.cs" />
     <Compile Include="Helper\CodenameToBitmapImageExtension.cs" />
     <Compile Include="Helper\GetInfomationFromListOfOperatorInfoHelper.cs" />
-    <Compile Include="Helper\OperatorClassToBitmapImageConverter.cs" />
+    <Compile Include="Helper\OperatorChildrenToClassImageConverter.cs" />
     <Compile Include="Helper\OperatorComparer.cs" />
     <Compile Include="Helper\OperatorComparerOption.cs" />
+    <Compile Include="Helper\OperatorTypeToStringConverter.cs" />
     <Compile Include="Models\Operators\OperatorChildren.cs" />
     <Compile Include="Models\Operators\OperatorInfo.cs" />
     <Compile Include="Models\Operators\OperatorType.cs" />

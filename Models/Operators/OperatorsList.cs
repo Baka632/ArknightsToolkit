@@ -43,6 +43,13 @@ namespace ArknightsToolkit.Models
         {
             OperatorListsViewModel.CompareByNameRequested += SortListByName;
             OperatorListsViewModel.CompareByStarCountRequested += SortListByStarCount;
+            OperatorListsViewModel.OperatorRequested += GetRequestedOpreator;
+        }
+
+        private Operator GetRequestedOpreator(string arg)
+        {
+            Operator operatorFound = OperatorList.Find((Operator op) => op.Name == arg);
+            return operatorFound;
         }
 
         public void SortListByName(OperatorComparerOption option)

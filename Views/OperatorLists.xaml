@@ -5,17 +5,15 @@
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helper="using:ArknightsToolkit.Helper"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:local="using:ArknightsToolkit.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="using:ArknightsToolkit.Models"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:viewmodel="using:ArknightsToolkit.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     DataContext="{x:Bind ViewModel}"
     mc:Ignorable="d">
     <Page.Resources>
-        <helper:CodenameToBitmapImageConverter x:Key="CodenameToBitmapImage" />
-        <helper:OperatorClassToBitmapImageConverter x:Key="OperatorClassToBitmapImage" />
         <RatingItemImageInfo x:Key="OperatorStar" Image="/Assets/ui-star.png" />
         <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="XamlAutoFontFamily" />
@@ -110,7 +108,6 @@
         <!--#endregion-->
     </Page.Resources>
 
-
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="{x:Bind ViewModel.BackgroundImage, Mode=OneWay}" Opacity="0.6" Stretch="UniformToFill" />
@@ -125,31 +122,53 @@
         <StackPanel Grid.Row="0" Margin="11,0,0,0">
             <TextBlock RequestedTheme="Dark" Style="{StaticResource HeaderTextBlockStyle}" Text="干员图鉴" />
             <TextBlock
-                PointerEntered="TextBlock_PointerEntered"
-                PointerExited="TextBlock_PointerExited"
                 FontSize="15"
                 FontWeight="Light"
+                PointerEntered="TextBlock_PointerEntered"
+                PointerExited="TextBlock_PointerExited"
                 Style="{StaticResource CaptionTextBlockStyle}"
                 Text="我曾对一个人许下这个誓言。一个对我来说最神圣的誓言。" />
         </StackPanel>
 
-        <Image x:Name="AmiyaBackgroundImage" Grid.RowSpan="3" Stretch="Uniform" Height="100" Width="80" HorizontalAlignment="Right" VerticalAlignment="Top" Source="{x:Bind ViewModel.AmiyaBackground}" Opacity="0">
+        <Image
+            x:Name="AmiyaBackgroundImage"
+            Grid.RowSpan="3"
+            Width="80"
+            Height="100"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Opacity="0"
+            Source="{x:Bind ViewModel.AmiyaBackground}"
+            Stretch="Uniform">
             <Image.Resources>
                 <Storyboard x:Name="InAmiyaBackgroundStoryboard">
-                    <DoubleAnimation Duration="0:0:0.3" To="0.15" Storyboard.TargetName="AmiyaBackgroundImage" Storyboard.TargetProperty="(UIElement.Opacity)"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="AmiyaBackgroundImage"
+                        Storyboard.TargetProperty="(UIElement.Opacity)"
+                        To="0.15"
+                        Duration="0:0:0.3" />
                 </Storyboard>
                 <Storyboard x:Name="OutAmiyaBackgroundStoryboard">
-                    <DoubleAnimation Duration="0:0:0.3" To="0" Storyboard.TargetName="AmiyaBackgroundImage" Storyboard.TargetProperty="(UIElement.Opacity)"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="AmiyaBackgroundImage"
+                        Storyboard.TargetProperty="(UIElement.Opacity)"
+                        To="0"
+                        Duration="0:0:0.3" />
                 </Storyboard>
             </Image.Resources>
-            
+
             <Image.RenderTransform>
-                <TranslateTransform/>
+                <TranslateTransform />
             </Image.RenderTransform>
         </Image>
 
-        <Grid Margin="11,10,0,0" Grid.Row="1">
-            <CommandBar Grid.Column="0" HorizontalAlignment="Left" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+        <Grid Grid.Row="1" Margin="11,10,0,0">
+            <CommandBar
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                Background="Transparent"
+                DefaultLabelPosition="Right"
+                IsOpen="False">
                 <CommandBar.Resources>
                     <helper:OperatorComparerOption x:Key="SortUp">
                         Normal
@@ -159,42 +178,65 @@
                     </helper:OperatorComparerOption>
                 </CommandBar.Resources>
 
-                <AppBarButton Icon="Up" Label="名称升序" Command="{x:Bind ViewModel.CompareByName,Mode=OneWay}" CommandParameter="{StaticResource SortUp}"/>
-                <AppBarButton Label="名称降序" Command="{x:Bind ViewModel.CompareByName,Mode=OneWay}" CommandParameter="{StaticResource SortReverse}">
+                <AppBarButton
+                    Command="{x:Bind ViewModel.CompareByName, Mode=OneWay}"
+                    CommandParameter="{StaticResource SortUp}"
+                    Icon="Up"
+                    Label="名称升序" />
+                <AppBarButton Command="{x:Bind ViewModel.CompareByName, Mode=OneWay}" CommandParameter="{StaticResource SortReverse}" Label="名称降序">
                     <AppBarButton.Icon>
                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE74B;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
 
-                <AppBarSeparator/>
+                <AppBarSeparator />
 
-                <AppBarButton Icon="Up" Label="稀有度升序" Command="{x:Bind ViewModel.CompareByStarCount,Mode=OneWay}" CommandParameter="{StaticResource SortUp}"/>
-                <AppBarButton Label="稀有度降序" Command="{x:Bind ViewModel.CompareByStarCount,Mode=OneWay}" CommandParameter="{StaticResource SortReverse}">
+                <AppBarButton
+                    Command="{x:Bind ViewModel.CompareByStarCount, Mode=OneWay}"
+                    CommandParameter="{StaticResource SortUp}"
+                    Icon="Up"
+                    Label="稀有度升序" />
+                <AppBarButton Command="{x:Bind ViewModel.CompareByStarCount, Mode=OneWay}" CommandParameter="{StaticResource SortReverse}" Label="稀有度降序">
                     <AppBarButton.Icon>
                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE74B;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
             </CommandBar>
 
-            <AutoSuggestBox Margin="11,0,50,0" PlaceholderText="搜索干员名称" HorizontalAlignment="Right" Grid.Column="2" VerticalAlignment="Center" Width="Auto" MinWidth="150" QueryIcon="Find"/>
+            <AutoSuggestBox
+                Grid.Column="2"
+                Width="Auto"
+                MinWidth="150"
+                Margin="11,0,50,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                PlaceholderText="搜索干员名称"
+                QueryIcon="Find" />
         </Grid>
-        
+
         <GridView
             x:Name="OperatorListGridView"
             Grid.Row="2"
             Margin="11,10,0,0"
             animations:ItemsReorderAnimation.Duration="00:00:0.5"
+            ItemsSource="{x:Bind ViewModel.OperatorsList, Mode=OneWay}"
+            IsItemClickEnabled="True"
+            ItemClick="OnItemClick"
             SelectionMode="None"
-            ItemsSource="{x:Bind ViewModel.OperatorsList, Mode=OneWay}">
+            Loaded="OperatorListGridView_Loaded">
             <GridView.ItemContainerTransitions>
                 <TransitionCollection>
-                    <ContentThemeTransition  />
+                    <ContentThemeTransition />
                 </TransitionCollection>
             </GridView.ItemContainerTransitions>
 
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="model:Operator">
-                    <Grid Width="200" Height="250" Padding="10" CanDrag="True">
+                    <Grid
+                        Width="200"
+                        Height="250"
+                        Padding="10"
+                        CanDrag="True">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition />
@@ -202,28 +244,29 @@
                         </Grid.RowDefinitions>
 
                         <RatingControl
-                            MaxRating="{x:Bind Star}"
                             Grid.Row="0"
-                            IsEnabled="False"
-                            Style="{StaticResource OperatorRatingControlStyle}"
                             x:Phase="1"
+                            IsEnabled="False"
+                            MaxRating="{x:Bind Star}"
+                            Style="{StaticResource OperatorRatingControlStyle}"
                             Value="{x:Bind Star}" />
                         <Image
+                            x:Name="OperatorImage"
                             Grid.Row="1"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             x:Phase="2"
                             Source="{x:Bind helper:GetInfomationFromListOfOperatorInfoHelper.GetOperatorImageFromList(Children)}"
-                            Stretch="Uniform"/>
+                            Stretch="Uniform" />
 
                         <Grid Grid.Row="2">
                             <TextBlock
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
+                                x:Phase="0"
                                 FontSize="15"
                                 RequestedTheme="Dark"
                                 Style="{StaticResource BaseTextBlockStyle}"
-                                x:Phase="0"
                                 Text="{x:Bind Name}" />
                             <Image
                                 Width="30"

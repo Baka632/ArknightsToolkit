@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ArknightsToolkit.Helper;
+using ArknightsToolkit.Models;
+using ArknightsToolkit.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,6 +14,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -22,11 +26,37 @@ namespace ArknightsToolkit.Views
     /// </summary>
     public sealed partial class OperatorDetails : Page
     {
-        public OperatorDetails ViewModel { get; }
+        public OperatorDetailsViewModel ViewModel { get; }
+        
         public OperatorDetails()
         {
             this.InitializeComponent();
-            ViewModel = new OperatorDetails();
+            ViewModel = new OperatorDetailsViewModel();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            ViewModel.CurrentOperator = e.Parameter as Operator;
+            ConnectedAnimation imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("ForwardConnectedAnimation");
+            if (imageAnimation != null)
+            {
+                _ = imageAnimation.TryStart(OperatorImage, new UIElement[] { OperatorNameStackPanel, OperatorStarRatingControl });
+            }
+            base.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("BackConnectedAnimation", OperatorImage);
+            base.OnNavigatingFrom(e);
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            OperatorInfo infoToGetIndex = (OperatorInfo)e.AddedItems.First();
+            List<OperatorInfo> SkinList = (from OperatorInfo info in (sender as ComboBox).Items where info.Type == OperatorType.Skin select info).ToList();
+            OperatorChildrenToOperatorImageConverter.IndexRequested = SkinList.IndexOf(infoToGetIndex);
+            ViewModel.ChangeOperatorTypeCommandByOperatorInfoCommmand.Execute(e.AddedItems.First());
         }
     }
 }

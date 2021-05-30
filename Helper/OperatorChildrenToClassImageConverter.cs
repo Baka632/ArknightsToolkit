@@ -1,4 +1,5 @@
 ﻿using ArknightsToolkit.Models;
+using ArknightsToolkit.Models.Operators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +13,18 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace ArknightsToolkit.Helper
 {
-    class OperatorClassToBitmapImageConverter : IValueConverter
+    class OperatorChildrenToClassImageConverter : IValueConverter
     {
+        public static OperatorType OperatorType { get; set; } = OperatorType.Elite0;
+
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             switch (value)
             {
-                case OperatorClass operatorsClass:
-                    byte[] imageArray = (byte[])Resources.Resource.ResourceManager.GetObject($"ui_{operatorsClass.ToString().ToLower()}");
-                    return imageArray.AsBitmapImage();
+                case OperatorChildren children:
+                    List<OperatorClass> temp = (from OperatorInfo info in children.ChildList where info.Type == OperatorType select info.Class).ToList();
+                    OperatorType = OperatorType.Elite0;
+                    return temp.First().ToClassImage();
                 default:
                     return DependencyProperty.UnsetValue;
             }
