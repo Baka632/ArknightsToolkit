@@ -28,7 +28,9 @@ namespace ArknightsToolkit.Views
     public sealed partial class OperatorLists : Page
     {
         private OperatorListsViewModel ViewModel { get; set; }
-        Operator _storeditem;
+
+        private Operator _storeditem;
+
         public OperatorLists()
         {
             this.InitializeComponent();
@@ -57,7 +59,10 @@ namespace ArknightsToolkit.Views
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            _ = OperatorListGridView.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "OperatorImage");
+            if (_storeditem != null && e.NavigationMode != NavigationMode.Back)
+            {
+                _ = OperatorListGridView.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "OperatorImage");
+            }
         }
 
         private async void OperatorListGridView_Loaded(object sender, RoutedEventArgs e)

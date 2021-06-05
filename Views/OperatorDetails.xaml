@@ -16,6 +16,9 @@
         <helper:OperatorChildrenToOperatorImageConverter x:Key="OpChildrenToOperatorImageConverter" />
         <helper:OperatorChildrenToClassImageConverter x:Key="OpChildrenToClassImageConverter" />
         <helper:OperatorTypeToStringConverter x:Key="OpTypeToStringConverter" />
+        <helper:OperatorChildrenToCVConverter x:Key="OpChildrenToCVConverter" />
+        <helper:OperatorProfileTypeToStringConverter x:Key="OpProfileTypeToStringConverter" />
+        <helper:OperatorChildrenToIllustratorConverter x:Key="OpChildrenToIllustratorConverter" />
         <RatingItemImageInfo x:Key="OperatorStar" Image="/Assets/ui-star.png" />
         <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="XamlAutoFontFamily" />
@@ -115,54 +118,85 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        
-        <StackPanel  Width="Auto" HorizontalAlignment="Left">
-            <controls:Expander
-                Margin="0,0,0,10"
-                VerticalAlignment="Top"
-                HorizontalContentAlignment="Stretch"
-                ExpandDirection="Right"
-                Header="档案">
-                <Grid Width="300">
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Text="This is the expanded content"
-                        TextWrapping="Wrap" />
-                </Grid>
-            </controls:Expander>
 
-            <controls:Expander
-                Margin="0,0,0,10"
-                VerticalAlignment="Top"
-                HorizontalContentAlignment="Stretch"
-                ExpandDirection="Right"
-                Header="语音">
-                <Grid Width="300">
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Text="This is the expanded content"
-                        TextWrapping="Wrap" />
-                </Grid>
-            </controls:Expander>
+        <ScrollViewer
+            Width="Auto"
+            MaxWidth="600"
+            HorizontalAlignment="Left"
+            VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <controls:Expander
+                    Margin="0,0,0,10"
+                    VerticalAlignment="Top"
+                    HorizontalContentAlignment="Stretch"
+                    ExpandDirection="Down"
+                    Header="档案">
+                    <ListView IsItemClickEnabled="False" ItemsSource="{x:Bind ViewModel.CurrentOperator.Profiles.ProfilesList}" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:OperatorProfile">
+                                <StackPanel>
+                                    <TextBlock
+                                        Margin="0,5,0,5"
+                                        FontSize="30"
+                                        FontWeight="Bold"
+                                        Text="{x:Bind Type, Converter={StaticResource OpProfileTypeToStringConverter}}" />
+                                    <TextBlock
+                                        Margin="0,0,0,10"
+                                        FontWeight="SemiLight"
+                                        Text="{x:Bind Profile}"
+                                        TextWrapping="WrapWholeWords" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="BorderBrush" Value="Gray" />
+                                <Setter Property="BorderThickness" Value="2" />
+                                <Setter Property="CornerRadius" Value="4" />
+                                <Setter Property="Margin" Value="5" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsStackPanel Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </controls:Expander>
 
-            <controls:Expander
-                Margin="0,0,0,10"
-                VerticalAlignment="Top"
-                HorizontalContentAlignment="Stretch"
-                ExpandDirection="Right"
-                Header="干员密录">
-                <Grid Width="300">
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Text="This is the expanded content"
-                        TextWrapping="Wrap" />
-                </Grid>
-            </controls:Expander>
-        </StackPanel>
-        
+                <controls:Expander
+                    Margin="0,0,0,10"
+                    VerticalAlignment="Top"
+                    HorizontalContentAlignment="Stretch"
+                    ExpandDirection="Down"
+                    Header="语音">
+                    <Grid Width="500" Height="300">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Text="We will meet soon ;)"
+                            TextWrapping="Wrap" />
+                    </Grid>
+                </controls:Expander>
+
+                <controls:Expander
+                    Margin="0,0,0,10"
+                    VerticalAlignment="Top"
+                    HorizontalContentAlignment="Stretch"
+                    ExpandDirection="Down"
+                    Header="干员密录">
+                    <Grid Width="500" Height="300">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Text="We will meet soon ;)"
+                            TextWrapping="Wrap" />
+                    </Grid>
+                </controls:Expander>
+            </StackPanel>
+        </ScrollViewer>
+
+
         <Grid x:Name="ContentGrid" Grid.Column="1" Margin="11,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -240,6 +274,25 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
+
+                <Grid Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock" />
+                    </Grid.Resources>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="画师:" />
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{x:Bind ViewModel.CurrentOperator.Children, Converter={StaticResource OpChildrenToIllustratorConverter}}" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="配音:" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind ViewModel.CurrentOperator.Children, Converter={StaticResource OpChildrenToCVConverter}}" />
+                </Grid>
             </StackPanel>
         </Grid>
     </Grid>

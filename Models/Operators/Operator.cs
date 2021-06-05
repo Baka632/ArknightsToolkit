@@ -41,6 +41,11 @@ namespace ArknightsToolkit.Models
 
         public OperatorChildren Children { get; set; }
 
+        /// <summary>
+        /// 干员档案
+        /// </summary>
+        public OperatorProfiles Profiles { get; set; }
+
         public Operator()
         {
             OperatorDetailsViewModel.OperatorTypeChanged += OnOperatorTypeChanged;

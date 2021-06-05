@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace ArknightsToolkit.Models.Operators
 {
-    [XmlType(TypeName= "Children")]
+    [XmlType(TypeName = "Children")]
     public class OperatorChildren
     {
         [XmlElement(ElementName = "Child")]

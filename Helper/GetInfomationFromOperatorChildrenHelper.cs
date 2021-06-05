@@ -10,7 +10,7 @@ using ArknightsToolkit.Models.Operators;
 
 namespace ArknightsToolkit.Helper
 {
-    public static class GetInfomationFromListOfOperatorInfoHelper
+    public static class GetInfomationFromOperatorChildrenHelper
     {
         public static OperatorType OperatorType { get; set; } = OperatorType.Elite0;
 

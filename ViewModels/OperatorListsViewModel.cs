@@ -23,7 +23,7 @@ namespace ArknightsToolkit.ViewModels
     {
         public static event Action<OperatorComparerOption> CompareByNameRequested;
         public static event Action<OperatorComparerOption> CompareByStarCountRequested;
-        public static event Func<string,Operator> OperatorRequested;
+        public static event Func<string, Operator> OperatorRequested;
 
         public DelegateCommand CompareByName { get; set; } = new DelegateCommand((object obj) => CompareByNameRequested?.Invoke((OperatorComparerOption)obj));
         public DelegateCommand CompareByStarCount { get; set; } = new DelegateCommand((object obj) => CompareByStarCountRequested?.Invoke((OperatorComparerOption)obj));

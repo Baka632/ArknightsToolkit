@@ -256,7 +256,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             x:Phase="2"
-                            Source="{x:Bind helper:GetInfomationFromListOfOperatorInfoHelper.GetOperatorImageFromList(Children)}"
+                            Source="{x:Bind helper:GetInfomationFromOperatorChildrenHelper.GetOperatorImageFromList(Children)}"
                             Stretch="Uniform" />
 
                         <Grid Grid.Row="2">
@@ -274,7 +274,7 @@
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 x:Phase="2"
-                                Source="{x:Bind helper:GetInfomationFromListOfOperatorInfoHelper.GetOperatorClassImageFromList(Children)}" />
+                                Source="{x:Bind helper:GetInfomationFromOperatorChildrenHelper.GetOperatorClassImageFromList(Children)}" />
                         </Grid>
                     </Grid>
                 </DataTemplate>

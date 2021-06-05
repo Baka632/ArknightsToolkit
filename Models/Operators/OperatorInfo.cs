@@ -15,21 +15,22 @@ namespace ArknightsToolkit.Models
         [XmlAttribute]
         public OperatorType Type { get; set; }
 
-        [XmlAttribute]
         /// <summary>
         /// 干员立绘图代号
         /// </summary>
+        [XmlAttribute]
         public string ImageCodename { get; set; }
+
+        [XmlAttribute]
+        public string Illustrator { get; set; }
+
+        [XmlAttribute]
+        public string CV { get; set; }
 
         /// <summary>
         /// 干员职业
         /// </summary>
         [XmlAttribute("OperatorClass")]
         public OperatorClass Class { get; set; }
-
-        /// <summary>
-        /// 干员档案
-        /// </summary>
-        public string Profile { get; set; }
     }
 }

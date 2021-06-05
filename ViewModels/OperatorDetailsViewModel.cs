@@ -20,7 +20,7 @@ namespace ArknightsToolkit.ViewModels
             ChangeOperatorTypeCommandByOperatorInfoCommmand = new DelegateCommand((object obj) =>
             {
                 OperatorInfo operatorInfo = (OperatorInfo)obj;
-                OperatorChildrenToClassImageConverter.OperatorType = OperatorChildrenToOperatorImageConverter.OperatorType = GetInfomationFromListOfOperatorInfoHelper.OperatorType = operatorInfo.Type;
+                OperatorChildrenToClassImageConverter.OperatorType = OperatorChildrenToOperatorImageConverter.OperatorType = GetInfomationFromOperatorChildrenHelper.OperatorType = operatorInfo.Type;
                 OperatorTypeChanged?.Invoke();
             });
         }
