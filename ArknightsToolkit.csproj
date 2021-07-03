@@ -180,7 +180,23 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\ui-star.png" />
+    <Content Include="Assets\UI\ui_operators_background.png" />
+    <Content Include="Assets\UI\ui_records.png" />
+    <Content Include="Assets\UI\ui_star.png" />
+    <Content Include="Assets\UI\ui_story-background1.png" />
+    <Content Include="Assets\UI\ui_story-background2.png" />
+    <Content Include="Assets\UI\ui_story_background3.png" />
+    <Content Include="Assets\UI\ui_tape.png" />
+    <Content Include="Assets\UI\ui_amiya_bg.png" />
+    <Content Include="Assets\UI\ui_caster.png" />
+    <Content Include="Assets\UI\ui_defender.png" />
+    <Content Include="Assets\UI\ui_guard.png" />
+    <Content Include="Assets\UI\ui_medic.png" />
+    <Content Include="Assets\UI\ui_missing.png" />
+    <Content Include="Assets\UI\ui_sniper.png" />
+    <Content Include="Assets\UI\ui_specialist.png" />
+    <Content Include="Assets\UI\ui_supporter.png" />
+    <Content Include="Assets\UI\ui_vanguard.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

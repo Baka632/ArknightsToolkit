@@ -31,9 +31,9 @@ namespace ArknightsToolkit.ViewModels
 
         public OperatorType RequestedClass { get; set; } = OperatorType.Elite0;
 
-        public BitmapImage BackgroundImage { get; } = Resources.Resource.background_operators.AsBitmapImage();
+        public BitmapImage BackgroundImage { get; } = new BitmapImage(new Uri(@"ms-appx:///Assets/UI/ui_operators_background.png", UriKind.Absolute));
 
-        public BitmapImage AmiyaBackground { get; } = Resources.Resource.ui_amiya_bg.AsBitmapImage();
+        public BitmapImage AmiyaBackground { get; } = new BitmapImage(new Uri(@"ms-appx:///Assets/UI/ui_amiya_bg.png", UriKind.Absolute));
 
         public IncrementalLoadingCollection<OperatorsList, Operator> OperatorsList { get; }
 

@@ -14,52 +14,34 @@ namespace ArknightsToolkit.ViewModels
     {
         public ObservableCollection<StoryButtonInfomation> StoryButtonInfoCollection { get; } = new ObservableCollection<StoryButtonInfomation>();
 
-        private BitmapImage backgroundImage;
-
-        public BitmapImage BackgroundImage
-        {
-            get => backgroundImage;
-            set
-            {
-                backgroundImage = value;
-                OnPropertiesChanged();
-            }
-        }
-
         public StoryPageViewModel()
         {
-            Initialize();
-
-            async void Initialize()
+            #region InitializeCollection
+            StoryButtonInfoCollection.Add(new StoryButtonInfomation()
             {
-                BackgroundImage = await Resources.Resource.ui_story_background3.AsBitmapImageAsync();
-                #region InitializeCollection
-                StoryButtonInfoCollection.Add(new StoryButtonInfomation()
-                {
-                    Title = "主线剧情",
-                    Image = await Resources.Resource.ui_missing.AsBitmapImageAsync(),
-                    Command = null
-                });
-                StoryButtonInfoCollection.Add(new StoryButtonInfomation()
-                {
-                    Title = "Side Story剧情",
-                    Image = await Resources.Resource.ui_missing.AsBitmapImageAsync(),
-                    Command = null
-                });
-                StoryButtonInfoCollection.Add(new StoryButtonInfomation()
-                {
-                    Title = "故事集",
-                    Image = await Resources.Resource.ui_records.AsBitmapImageAsync(),
-                    Command = null
-                });
-                StoryButtonInfoCollection.Add(new StoryButtonInfomation()
-                {
-                    Title = "其他",
-                    Image = await Resources.Resource.ui_missing.AsBitmapImageAsync(),
-                    Command = null
-                });
-                #endregion
-            }
+                Title = "主线剧情",
+                Image = new BitmapImage(new Uri($"ms-appx:///Assets/UI/ui_missing.png")),
+                Command = null
+            });
+            StoryButtonInfoCollection.Add(new StoryButtonInfomation()
+            {
+                Title = "Side Story剧情",
+                Image = new BitmapImage(new Uri($"ms-appx:///Assets/UI/ui_missing.png")),
+                Command = null
+            });
+            StoryButtonInfoCollection.Add(new StoryButtonInfomation()
+            {
+                Title = "故事集",
+                Image = new BitmapImage(new Uri($"ms-appx:///Assets/UI/ui_records.png")),
+                Command = null
+            });
+            StoryButtonInfoCollection.Add(new StoryButtonInfomation()
+            {
+                Title = "其他",
+                Image = new BitmapImage(new Uri($"ms-appx:///Assets/UI/ui_missing.png")),
+                Command = null
+            });
+            #endregion
         }
     }
 }

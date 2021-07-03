@@ -15,31 +15,15 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace ArknightsToolkit.ViewModels
 {
-    class FrontPageViewModel : NotificationObject
+    internal class FrontPageViewModel : NotificationObject
     {
-        private BitmapImage tapeImage;
-
         public NavigationCommand NavigateToOperatorsCommand { get; set; } = new NavigationCommand(typeof(OperatorLists), null);
         public NavigationCommand NavigateToStoryPageCommand { get; set; } = new NavigationCommand(typeof(StoryPage), null);
-        public BitmapImage TapeImage
-        {
-            get => tapeImage;
-            private set
-            {
-                tapeImage = value;
-                OnPropertiesChanged();
-            }
-        }
 
 
         public FrontPageViewModel()
         {
-            SetTapeImage();
 
-            async void SetTapeImage()
-            {
-                TapeImage = await Resources.Resource.ui_tape.AsBitmapImageAsync();
-            }
         }
     }
 }

@@ -14,7 +14,7 @@
     DataContext="{x:Bind ViewModel}"
     mc:Ignorable="d">
     <Page.Resources>
-        <RatingItemImageInfo x:Key="OperatorStar" Image="/Assets/ui-star.png" />
+        <RatingItemImageInfo x:Key="OperatorStar" Image="/Assets/UI/ui_star.png" />
         <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="XamlAutoFontFamily" />
             <Setter Property="FontWeight" Value="SemiBold" />
@@ -235,8 +235,7 @@
                     <Grid
                         Width="200"
                         Height="250"
-                        Padding="10"
-                        CanDrag="True">
+                        Padding="10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition />

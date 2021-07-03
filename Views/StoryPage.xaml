@@ -12,12 +12,16 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/UI/ui_story_background3.png" Opacity="0.4" Stretch="UniformToFill" />
+        </Grid.Background>
+
         <Image
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             Opacity="0.5"
-            Source="{x:Bind ViewModel.BackgroundImage, Mode=OneWay}"
+            Source="/Assets/UI/ui_story_background3.png"
             Stretch="UniformToFill" />
 
         <GridView

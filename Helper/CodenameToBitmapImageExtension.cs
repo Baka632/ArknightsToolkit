@@ -27,8 +27,8 @@ namespace ArknightsToolkit.Helper
 
         public static BitmapImage ToClassImage(this OperatorClass value)
         {
-            byte[] imageArray = (byte[])Resources.Resource.ResourceManager.GetObject($"ui_{value.ToString().ToLower()}");
-            return imageArray.AsBitmapImage();
+            Uri uri = new Uri($"ms-appx:///Assets/UI/ui_{value.ToString().ToLower()}.png");
+            return new BitmapImage(uri);
         }
     }
 }
