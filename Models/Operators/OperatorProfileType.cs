@@ -17,7 +17,7 @@
         /// <summary>
         /// 档案资料一
         /// </summary>
-        FIle1,
+        File1,
         /// <summary>
         /// 档案资料二
         /// </summary>

@@ -21,7 +21,7 @@ namespace ArknightsToolkit.Helper
                     return "客观履历";
                 case OperatorProfileType.ClinicalAnalysis:
                     return "临床诊断分析";
-                case OperatorProfileType.FIle1:
+                case OperatorProfileType.File1:
                     return "档案资料一";
                 case OperatorProfileType.File2:
                     return "档案资料二";

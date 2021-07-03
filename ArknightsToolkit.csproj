@@ -140,6 +140,7 @@
     <Compile Include="Models\Operators\OperatorProfile.cs" />
     <Compile Include="Models\Operators\OperatorProfiles.cs" />
     <Compile Include="Models\Operators\OperatorProfileType.cs" />
+    <Compile Include="Models\Operators\OperatorSkinInfo.cs" />
     <Compile Include="Models\Operators\OperatorType.cs" />
     <Compile Include="Models\StoryButtonInfomation.cs" />
     <Compile Include="Helper\NavigationHelper.cs" />
@@ -217,16 +218,16 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.10</Version>
+      <Version>6.2.12</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
-      <Version>7.0.1</Version>
+      <Version>7.0.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
-      <Version>7.0.0</Version>
+      <Version>7.0.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.5.0</Version>
+      <Version>2.6.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

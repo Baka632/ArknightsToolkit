@@ -26,7 +26,7 @@ namespace ArknightsToolkit.Helper
                     var temp = (from OperatorInfo info in children.ChildList where info.Type == OperatorType select info.ImageCodename).ToList();
                     if (temp.Count > 1 && IndexRequested is int i && i != -1)
                     {
-                        OperatorType = OperatorType.Elite0;
+                        ResetOperatorType();
                         return temp.ElementAt(i).ToOperatorImage();
                     }
                     else
@@ -37,6 +37,11 @@ namespace ArknightsToolkit.Helper
                 default:
                     return DependencyProperty.UnsetValue;
             }
+        }
+
+        private static void ResetOperatorType()
+        {
+            OperatorType = OperatorType.Elite0;
         }
 
         [Obsolete("不应该调用该方法",true)]
