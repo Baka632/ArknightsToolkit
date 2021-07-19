@@ -55,7 +55,7 @@ namespace ArknightsToolkit.Views
         {
             OperatorInfo infoToGetIndex = (OperatorInfo)e.AddedItems.First();
             List<OperatorInfo> SkinList = (from OperatorInfo info in (sender as ComboBox).Items where info.Type == OperatorType.Skin select info).ToList();
-            OperatorChildrenToOperatorImageConverter.IndexRequested = SkinList.IndexOf(infoToGetIndex);
+            OperatorInformationToOperatorImageConverter.IndexRequested = SkinList.IndexOf(infoToGetIndex);
             ViewModel.ChangeOperatorTypeCommandByOperatorInfoCommmand.Execute(e.AddedItems.First());
         }
     }

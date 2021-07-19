@@ -1,5 +1,4 @@
-﻿using ArknightsToolkit.Models.Operators;
-using ArknightsToolkit.ViewModels;
+﻿using ArknightsToolkit.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,12 +38,14 @@ namespace ArknightsToolkit.Models
         /// </summary>
         public OperatorGender Gender { get; set; }
 
-        public OperatorChildren Children { get; set; }
+        [XmlArrayItem(elementName: "Info")]
+        public List<OperatorInfo> Information;
 
+        [XmlArrayItem(elementName: "Profile")]
         /// <summary>
         /// 干员档案
         /// </summary>
-        public OperatorProfiles Profiles { get; set; }
+        public List<OperatorProfile> Profiles;
 
         public Operator()
         {
@@ -53,7 +54,7 @@ namespace ArknightsToolkit.Models
 
         private void OnOperatorTypeChanged()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Children)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Information)));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

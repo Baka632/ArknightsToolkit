@@ -13,12 +13,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
     <Page.Resources>
-        <helper:OperatorChildrenToOperatorImageConverter x:Key="OpChildrenToOperatorImageConverter" />
-        <helper:OperatorChildrenToClassImageConverter x:Key="OpChildrenToClassImageConverter" />
+        <helper:OperatorInformationToOperatorImageConverter x:Key="OpInformationToOperatorImageConverter" />
+        <helper:OperatorInformationToClassImageConverter x:Key="OpInformationToClassImageConverter" />
         <helper:OperatorTypeToStringConverter x:Key="OpTypeToStringConverter" />
-        <helper:OperatorChildrenToCVConverter x:Key="OpChildrenToCVConverter" />
+        <helper:OperatorInformationToCVConverter x:Key="OpInformationToCVConverter" />
         <helper:OperatorProfileTypeToStringConverter x:Key="OpProfileTypeToStringConverter" />
-        <helper:OperatorChildrenToIllustratorConverter x:Key="OpChildrenToIllustratorConverter" />
+        <helper:OperatorInformationToIllustratorConverter x:Key="OpInformationToIllustratorConverter" />
         <RatingItemImageInfo x:Key="OperatorStar" Image="/Assets/UI/ui_star.png" />
         <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="XamlAutoFontFamily" />
@@ -152,7 +152,7 @@
                         <ListView
                             x:Name="profilesListView"
                             IsItemClickEnabled="False"
-                            ItemsSource="{x:Bind ViewModel.CurrentOperator.Profiles.ProfilesList}"
+                            ItemsSource="{x:Bind ViewModel.CurrentOperator.Profiles}"
                             SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="models:OperatorProfile">
@@ -232,7 +232,7 @@
                         Height="500"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Source="{x:Bind ViewModel.CurrentOperator.Children, Mode=OneWay, Converter={StaticResource OpChildrenToOperatorImageConverter}}"
+                        Source="{x:Bind ViewModel.CurrentOperator.Information, Mode=OneWay, Converter={StaticResource OpInformationToOperatorImageConverter}}"
                         Stretch="Uniform" />
                 </ScrollViewer>
 
@@ -267,7 +267,7 @@
                                 Height="50"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Source="{x:Bind ViewModel.CurrentOperator.Children, Mode=OneWay, Converter={StaticResource OpChildrenToClassImageConverter}}" />
+                                Source="{x:Bind ViewModel.CurrentOperator.Information, Mode=OneWay, Converter={StaticResource OpInformationToClassImageConverter}}" />
                         </Border>
 
                         <TextBlock
@@ -278,11 +278,11 @@
                             Text="{x:Bind ViewModel.CurrentOperator.Name}" />
 
                         <ComboBox
-                            x:Name="OperatorChildrenComboBox"
+                            x:Name="OperatorInformationComboBox"
                             Width="Auto"
                             Margin="10,0,0,0"
                             VerticalAlignment="Center"
-                            ItemsSource="{x:Bind ViewModel.CurrentOperator.Children.ChildList}"
+                            ItemsSource="{x:Bind ViewModel.CurrentOperator.Information}"
                             SelectedIndex="0"
                             SelectionChanged="ComboBox_SelectionChanged">
                             <ComboBox.ItemTemplate>
@@ -315,7 +315,7 @@
                             <TextBlock
                                 Grid.Row="0"
                                 Grid.Column="1"
-                                Text="{x:Bind ViewModel.CurrentOperator.Children, Converter={StaticResource OpChildrenToIllustratorConverter}}" />
+                                Text="{x:Bind ViewModel.CurrentOperator.Information, Converter={StaticResource OpInformationToIllustratorConverter}}" />
                             <TextBlock
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -323,7 +323,7 @@
                             <TextBlock
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Text="{x:Bind ViewModel.CurrentOperator.Children, Converter={StaticResource OpChildrenToCVConverter}}" />
+                                Text="{x:Bind ViewModel.CurrentOperator.Information, Converter={StaticResource OpInformationToCVConverter}}" />
                         </Grid>
                     </StackPanel>
                 </StackPanel>

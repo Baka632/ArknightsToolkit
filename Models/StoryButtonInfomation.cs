@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace ArknightsToolkit.Models
 {
-    class StoryButtonInfomation : DependencyObject
+    class StoryButtonInformation : DependencyObject
     {
         public string Title
         {
@@ -19,7 +19,7 @@ namespace ArknightsToolkit.Models
 
         // Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(StoryButtonInfomation), new PropertyMetadata("DEFALUT"));
+            DependencyProperty.Register("Title", typeof(string), typeof(StoryButtonInformation), new PropertyMetadata("DEFALUT"));
 
         public BitmapImage Image
         {
@@ -29,7 +29,7 @@ namespace ArknightsToolkit.Models
 
         // Using a DependencyProperty as the backing store for Image.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ImageProperty =
-            DependencyProperty.Register("Image", typeof(BitmapImage), typeof(StoryButtonInfomation), new PropertyMetadata(null));
+            DependencyProperty.Register("Image", typeof(BitmapImage), typeof(StoryButtonInformation), new PropertyMetadata(null));
 
 
 
@@ -41,6 +41,6 @@ namespace ArknightsToolkit.Models
 
         // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.Register("Command", typeof(NavigationCommand), typeof(StoryButtonInfomation), new PropertyMetadata(null));
+            DependencyProperty.Register("Command", typeof(NavigationCommand), typeof(StoryButtonInformation), new PropertyMetadata(null));
     }
 }

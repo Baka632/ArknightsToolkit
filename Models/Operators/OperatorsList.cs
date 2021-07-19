@@ -2,15 +2,12 @@
 using ArknightsToolkit.Services;
 using ArknightsToolkit.ViewModels;
 using Microsoft.Toolkit.Collections;
-using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace ArknightsToolkit.Models

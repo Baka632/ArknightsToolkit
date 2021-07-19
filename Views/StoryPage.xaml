@@ -61,7 +61,7 @@
             </GridView.RenderTransform>
 
             <GridView.ItemTemplate>
-                <DataTemplate x:DataType="model:StoryButtonInfomation">
+                <DataTemplate x:DataType="model:StoryButtonInformation">
                     <StackPanel Height="200" Padding="5">
                         <Image
                             x:Name="StoryButtonImage"

@@ -1,5 +1,4 @@
 ﻿using ArknightsToolkit.Models;
-using ArknightsToolkit.Models.Operators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +12,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace ArknightsToolkit.Helper
 {
-    class OperatorChildrenToOperatorImageConverter : IValueConverter
+    class OperatorInformationToOperatorImageConverter : IValueConverter
     {
         public static OperatorType OperatorType { get; set; } = OperatorType.Elite0;
         public static int IndexRequested = -1;
@@ -22,8 +21,8 @@ namespace ArknightsToolkit.Helper
         {
             switch (value)
             {
-                case OperatorChildren children:
-                    var temp = (from OperatorInfo info in children.ChildList where info.Type == OperatorType select info.ImageCodename).ToList();
+                case List<OperatorInfo> Information:
+                    List<string> temp = (from OperatorInfo info in Information where info.Type == OperatorType select info.ImageCodename).ToList();
                     if (temp.Count > 1 && IndexRequested is int i && i != -1)
                     {
                         ResetOperatorType();
