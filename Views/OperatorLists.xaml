@@ -7,7 +7,7 @@
     xmlns:helper="using:ArknightsToolkit.Helper"
     xmlns:local="using:ArknightsToolkit.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:model="using:ArknightsToolkit.Models"
+    xmlns:model="using:ArknightsResources.Models"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:viewmodel="using:ArknightsToolkit.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
@@ -255,7 +255,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             x:Phase="2"
-                            Source="{x:Bind helper:GetInformationFromOperatorInformationHelper.GetOperatorImageFromList(Information)}"
+                            Source="{x:Bind helper:OperatorInfosGetter.GetImage(ImageCodename),Mode=OneWay}"
                             Stretch="Uniform" />
 
                         <Grid Grid.Row="2">
@@ -273,7 +273,7 @@
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 x:Phase="2"
-                                Source="{x:Bind helper:GetInformationFromOperatorInformationHelper.GetOperatorClassImageFromList(Information)}" />
+                                Source="{x:Bind helper:OperatorInfosGetter.GetClassImage(Information[0])}" />
                         </Grid>
                     </Grid>
                 </DataTemplate>

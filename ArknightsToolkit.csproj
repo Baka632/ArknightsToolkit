@@ -17,7 +17,9 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <PackageCertificateThumbprint>E0C989F856BAAD89FB8A6F848F6E4C709804CEE1</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -123,23 +125,13 @@
     </Compile>
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\NavigationCommand.cs" />
-    <Compile Include="Helper\Conventer\ByteArrayToBitmapImageConverter.cs" />
     <Compile Include="Helper\ByteArrayToBitmapImageExtension.cs" />
-    <Compile Include="Helper\Conventer\OperatorInformationToOperatorImageConverter.cs" />
+    <Compile Include="Helper\OperatorInfosGetter.cs" />
     <Compile Include="Helper\CodenameToBitmapImageExtension.cs" />
-    <Compile Include="Helper\Conventer\OperatorProfileTypeToStringConverter.cs" />
-    <Compile Include="Helper\GetInfomationFromOperatorInformationHelper.cs" />
-    <Compile Include="Helper\Conventer\OperatorInformationToClassImageConverter.cs" />
-    <Compile Include="Helper\OperatorComparer.cs" />
+    <Compile Include="Helper\Converter\OperatorProfileTypeToStringConverter.cs" />
     <Compile Include="Helper\OperatorComparerOption.cs" />
-    <Compile Include="Helper\Conventer\OperatorInformationToCVConverter.cs" />
-    <Compile Include="Helper\Conventer\OperatorInformationToIllustratorConverter.cs" />
-    <Compile Include="Helper\Conventer\OperatorTypeToStringConverter.cs" />
-    <Compile Include="Models\Operators\OperatorInfo.cs" />
-    <Compile Include="Models\Operators\OperatorProfile.cs" />
-    <Compile Include="Models\Operators\OperatorProfileType.cs" />
-    <Compile Include="Models\Operators\OperatorSkinInfo.cs" />
-    <Compile Include="Models\Operators\OperatorType.cs" />
+    <Compile Include="Helper\Converter\OperatorTypeToStringConverter.cs" />
+    <Compile Include="Helper\OptionalPackageHelper.cs" />
     <Compile Include="Models\StoryButtonInfomation.cs" />
     <Compile Include="Helper\NavigationHelper.cs" />
     <Compile Include="Helper\TitleBarHelper.cs" />
@@ -154,11 +146,6 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Operators\OperatorBirthday.cs" />
-    <Compile Include="Models\Operators\Operator.cs" />
-    <Compile Include="Models\Operators\OperatorClass.cs" />
-    <Compile Include="Models\Operators\OperatorGender.cs" />
-    <Compile Include="Models\Operators\OperatorsList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\XmlService.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
@@ -209,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Helper\Converter\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\FrontPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -244,11 +235,14 @@
       <Version>2.6.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\ArknightsToolkit.Resources\ArknightsToolkit.Resources.csproj">
-      <Project>{b6cec746-5383-4542-9ac2-d9c3ddd11d80}</Project>
-      <Name>ArknightsToolkit.Resources</Name>
+    <ProjectReference Include="..\ArknightsResources\ArknightsResources.Helpers\ArknightsResources.Helpers.csproj">
+      <Project>{1F5C62B2-CE6C-4211-B3E0-9D43533D531F}</Project>
+      <Name>ArknightsResources.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArknightsResources\ArknightsResources.Models\ArknightsResources.Models.csproj">
+      <Project>{54508E78-8841-4616-B65E-AEC12F565940}</Project>
+      <Name>ArknightsResources.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

@@ -8,14 +8,14 @@
 
   <Identity
     Name="e47ec95d-8bf8-44d0-bb9b-fe2f0c0abb6f"
-    Publisher="CN=steve"
+    Publisher="CN=Baka632"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="e47ec95d-8bf8-44d0-bb9b-fe2f0c0abb6f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ArknightsToolkit</DisplayName>
-    <PublisherDisplayName>steve</PublisherDisplayName>
+    <PublisherDisplayName>Baka632</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

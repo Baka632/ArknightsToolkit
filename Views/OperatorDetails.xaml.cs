@@ -1,5 +1,5 @@
-﻿using ArknightsToolkit.Helper;
-using ArknightsToolkit.Models;
+﻿using ArknightsResources.Models;
+using ArknightsToolkit.Helper;
 using ArknightsToolkit.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -37,7 +37,7 @@ namespace ArknightsToolkit.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ViewModel.CurrentOperator = e.Parameter as Operator;
+            ViewModel.CurrentOperator = (Operator)e.Parameter;
             ConnectedAnimation imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("ForwardConnectedAnimation");
             if (imageAnimation != null)
             {
@@ -49,14 +49,6 @@ namespace ArknightsToolkit.Views
         {
             _ = ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("BackConnectedAnimation", OperatorImage);
             base.OnNavigatingFrom(e);
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            OperatorInfo infoToGetIndex = (OperatorInfo)e.AddedItems.First();
-            List<OperatorInfo> SkinList = (from OperatorInfo info in (sender as ComboBox).Items where info.Type == OperatorType.Skin select info).ToList();
-            OperatorInformationToOperatorImageConverter.IndexRequested = SkinList.IndexOf(infoToGetIndex);
-            ViewModel.ChangeOperatorTypeCommandByOperatorInfoCommmand.Execute(e.AddedItems.First());
         }
     }
 }

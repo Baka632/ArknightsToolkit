@@ -1,4 +1,4 @@
-﻿using ArknightsToolkit.Models;
+﻿using ArknightsResources.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

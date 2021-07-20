@@ -11,7 +11,7 @@ using Windows.Data.Xml.Dom;
 
 namespace ArknightsToolkit.Services
 {
-    public class XmlService
+    public static class XmlService
     {
         private static void XmlSerializeInternal(Stream stream, object o, Encoding encoding)
         {

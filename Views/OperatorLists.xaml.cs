@@ -1,4 +1,4 @@
-﻿using ArknightsToolkit.Models;
+﻿using ArknightsResources.Models;
 using ArknightsToolkit.ViewModels;
 using Microsoft.Toolkit.Uwp;
 using System;
@@ -29,7 +29,7 @@ namespace ArknightsToolkit.Views
     {
         private OperatorListsViewModel ViewModel { get; set; }
 
-        private Operator _storeditem;
+        private Operator _storeditem = null;
 
         public OperatorLists()
         {
@@ -52,9 +52,9 @@ namespace ArknightsToolkit.Views
         {
             if (OperatorListGridView.ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                _storeditem = container.Content as Operator;
+                _storeditem = (Operator)container.Content;
             }
-            ViewModel.NavigateToOperatorDetailsCommand.Execute((e.ClickedItem as Operator).Name);
+            ViewModel.NavigateToOperatorDetailsCommand.Execute((Operator)e.ClickedItem);
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)

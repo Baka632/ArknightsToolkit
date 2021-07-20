@@ -6,19 +6,14 @@
     xmlns:helper="using:ArknightsToolkit.Helper"
     xmlns:local="using:ArknightsToolkit.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:ArknightsToolkit.Models"
+    xmlns:models="using:ArknightsResources.Models"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:viewmodels="using:ArknightsToolkit.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:OperatorDetailsViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
     <Page.Resources>
-        <helper:OperatorInformationToOperatorImageConverter x:Key="OpInformationToOperatorImageConverter" />
-        <helper:OperatorInformationToClassImageConverter x:Key="OpInformationToClassImageConverter" />
-        <helper:OperatorTypeToStringConverter x:Key="OpTypeToStringConverter" />
-        <helper:OperatorInformationToCVConverter x:Key="OpInformationToCVConverter" />
-        <helper:OperatorProfileTypeToStringConverter x:Key="OpProfileTypeToStringConverter" />
-        <helper:OperatorInformationToIllustratorConverter x:Key="OpInformationToIllustratorConverter" />
+        <helper:OperatorInfosGetter x:Key="OpImageGetter" />
         <RatingItemImageInfo x:Key="OperatorStar" Image="/Assets/UI/ui_star.png" />
         <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="XamlAutoFontFamily" />
@@ -29,10 +24,7 @@
             <Setter Property="LineStackingStrategy" Value="MaxHeight" />
             <Setter Property="TextLineBounds" Value="Full" />
         </Style>
-        <Style
-            x:Key="CaptionTextBlockStyle"
-            BasedOn="{StaticResource BaseTextBlockStyle}"
-            TargetType="TextBlock">
+        <Style x:Key="CaptionTextBlockStyle" BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock">
             <Setter Property="FontSize" Value="12" />
             <Setter Property="FontWeight" Value="Normal" />
         </Style>
@@ -47,10 +39,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="RatingControl">
                         <Grid x:Name="LayoutRoot">
-                            <StackPanel
-                                Grid.Row="0"
-                                Margin="-20,-20,-20,-20"
-                                Orientation="Horizontal">
+                            <StackPanel Grid.Row="0" Margin="-20,-20,-20,-20" Orientation="Horizontal">
                                 <StackPanel
                                     x:Name="RatingBackgroundStackPanel"
                                     Margin="20,20,0,20"
@@ -68,10 +57,7 @@
                                     Text="{TemplateBinding Caption}"
                                     TextLineBounds="TrimToBaseline" />
                             </StackPanel>
-                            <ContentPresenter
-                                x:Name="ForegroundContentPresenter"
-                                Grid.Row="0"
-                                IsHitTestVisible="False">
+                            <ContentPresenter x:Name="ForegroundContentPresenter" Grid.Row="0" IsHitTestVisible="False">
                                 <StackPanel Margin="-40,-40,-40,-40" Orientation="Horizontal">
                                     <StackPanel
                                         x:Name="RatingForegroundStackPanel"
@@ -122,10 +108,7 @@
         <!--#endregion-->
     </Page.Resources>
 
-    <ScrollViewer
-        x:Name="mainScrollViewer"
-        Width="Auto"
-        Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
+    <ScrollViewer x:Name="mainScrollViewer" Width="Auto" Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
         <Grid Width="Auto" Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -162,10 +145,7 @@
                                             FontSize="30"
                                             FontWeight="Bold"
                                             Text="{x:Bind Type, Converter={StaticResource OpProfileTypeToStringConverter}}" />
-                                        <RichTextBlock
-                                            Margin="0,0,0,10"
-                                            FontWeight="SemiLight"
-                                            TextWrapping="Wrap">
+                                        <RichTextBlock Margin="0,0,0,10" FontWeight="SemiLight" TextWrapping="Wrap">
                                             <Paragraph>
                                                 <Run Text="{x:Bind Profile}" />
                                             </Paragraph>
@@ -206,10 +186,7 @@
                 </StackPanel>
             </ScrollViewer>
 
-            <Grid
-                x:Name="ContentGrid"
-                Grid.Row="0"
-                Margin="11,5,11,0">
+            <Grid x:Name="ContentGrid" Grid.Row="0" Margin="11,5,11,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -232,7 +209,7 @@
                         Height="500"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Source="{x:Bind ViewModel.CurrentOperator.Information, Mode=OneWay, Converter={StaticResource OpInformationToOperatorImageConverter}}"
+                        Source="{x:Bind helper:OperatorInfosGetter.GetImage(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex), Mode=OneWay}"
                         Stretch="Uniform" />
                 </ScrollViewer>
 
@@ -249,10 +226,7 @@
                         Style="{StaticResource OperatorRatingControlStyle}"
                         Value="{x:Bind ViewModel.CurrentOperator.Star}" />
 
-                    <StackPanel
-                        x:Name="OperatorNameStackPanel"
-                        HorizontalAlignment="Left"
-                        Orientation="Horizontal">
+                    <StackPanel x:Name="OperatorNameStackPanel" HorizontalAlignment="Left" Orientation="Horizontal">
                         <Border
                             Width="65"
                             Height="65"
@@ -267,7 +241,7 @@
                                 Height="50"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Source="{x:Bind ViewModel.CurrentOperator.Information, Mode=OneWay, Converter={StaticResource OpInformationToClassImageConverter}}" />
+                                Source="{x:Bind helper:OperatorInfosGetter.GetClassImage(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex), Mode=OneWay}" />
                         </Border>
 
                         <TextBlock
@@ -283,8 +257,7 @@
                             Margin="10,0,0,0"
                             VerticalAlignment="Center"
                             ItemsSource="{x:Bind ViewModel.CurrentOperator.Information}"
-                            SelectedIndex="0"
-                            SelectionChanged="ComboBox_SelectionChanged">
+                            SelectedIndex="0">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate x:DataType="models:OperatorInfo">
                                     <TextBlock Text="{x:Bind Type, Converter={StaticResource OpTypeToStringConverter}}" />
@@ -292,10 +265,7 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
-                        <Grid
-                            Margin="5,0,0,0"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
+                        <Grid Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
@@ -308,22 +278,10 @@
                                 <Style BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock" />
                             </Grid.Resources>
 
-                            <TextBlock
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Text="画师:" />
-                            <TextBlock
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Text="{x:Bind ViewModel.CurrentOperator.Information, Converter={StaticResource OpInformationToIllustratorConverter}}" />
-                            <TextBlock
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Text="配音:" />
-                            <TextBlock
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Text="{x:Bind ViewModel.CurrentOperator.Information, Converter={StaticResource OpInformationToCVConverter}}" />
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="画师:" />
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{x:Bind helper:OperatorInfosGetter.GetIllustrator(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex),Mode=OneWay}" />
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="配音:" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind helper:OperatorInfosGetter.GetCV(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex),Mode=OneWay}" />
                         </Grid>
                     </StackPanel>
                 </StackPanel>

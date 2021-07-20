@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace ArknightsToolkit.Helper
 {
-    class TitleBarHelper
+    internal class TitleBarHelper
     {
         public ApplicationViewTitleBar PresentationTitleBar { get; } = ApplicationView.GetForCurrentView().TitleBar;
         public SystemNavigationManager NavigationManager { get; } = SystemNavigationManager.GetForCurrentView();
@@ -24,6 +24,8 @@ namespace ArknightsToolkit.Helper
         {
             #region TitleBarColor
             PresentationTitleBar.ButtonBackgroundColor = Colors.Transparent;
+            CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            coreTitleBar.ExtendViewIntoTitleBar = true;
             Color ForegroundColor;
             switch (Application.Current.RequestedTheme)
             {
@@ -39,7 +41,7 @@ namespace ArknightsToolkit.Helper
             }
             PresentationTitleBar.ButtonForegroundColor = ForegroundColor;
             #endregion
-
+            
             CurrentFrame = frame;
             CurrentFrame.Navigated += CurrentFrame_Navigated;
         }
