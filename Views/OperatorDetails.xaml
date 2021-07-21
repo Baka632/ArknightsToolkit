@@ -6,7 +6,7 @@
     xmlns:helper="using:ArknightsToolkit.Helper"
     xmlns:local="using:ArknightsToolkit.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:ArknightsResources.Models"
+    xmlns:models="using:ArknightsResources.Models.WindowsRuntime"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:viewmodels="using:ArknightsToolkit.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:OperatorDetailsViewModel}"

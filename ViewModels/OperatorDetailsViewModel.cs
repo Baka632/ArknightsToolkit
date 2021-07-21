@@ -1,4 +1,5 @@
 ﻿using ArknightsResources.Models;
+using ArknightsResources.Models.WindowsRuntime;
 using ArknightsToolkit.Commands;
 using ArknightsToolkit.Helper;
 using System;

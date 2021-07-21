@@ -1,4 +1,5 @@
 ﻿using ArknightsResources.Models;
+using ArknightsResources.Models.WindowsRuntime;
 using System;
 using System.Collections.Generic;
 using System.Linq;

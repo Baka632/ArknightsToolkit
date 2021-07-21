@@ -103,6 +103,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -182,6 +183,7 @@
     <Content Include="Assets\UI\ui_specialist.png" />
     <Content Include="Assets\UI\ui_supporter.png" />
     <Content Include="Assets\UI\ui_vanguard.png" />
+    <Content Include="Bundle.Mapping.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -236,13 +238,13 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArknightsResources\ArknightsResources.Helpers\ArknightsResources.Helpers.csproj">
-      <Project>{1F5C62B2-CE6C-4211-B3E0-9D43533D531F}</Project>
-      <Name>ArknightsResources.Helpers</Name>
+    <ProjectReference Include="..\ArknightsResources\ArknightsResources.Helpers.WindowsRuntime\ArknightsResources.Helpers.WindowsRuntime.csproj">
+      <Project>{959B2F8F-7372-4E92-B9C4-47A27F8F0B32}</Project>
+      <Name>ArknightsResources.Helpers.WindowsRuntime</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ArknightsResources\ArknightsResources.Models\ArknightsResources.Models.csproj">
-      <Project>{54508E78-8841-4616-B65E-AEC12F565940}</Project>
-      <Name>ArknightsResources.Models</Name>
+    <ProjectReference Include="..\ArknightsResources\ArknightsResources.Models.WindowsRuntime\ArknightsResources.Models.WindowsRuntime.csproj">
+      <Project>{6941359F-9731-4CB7-A334-B920DA8E5C24}</Project>
+      <Name>ArknightsResources.Models.WindowsRuntime</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

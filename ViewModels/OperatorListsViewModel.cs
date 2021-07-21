@@ -1,5 +1,6 @@
-﻿using ArknightsResources.Helpers;
+﻿using ArknightsResources.Helpers.WindowsRuntime;
 using ArknightsResources.Models;
+using ArknightsResources.Models.WindowsRuntime;
 using ArknightsToolkit.Commands;
 using ArknightsToolkit.Helper;
 using ArknightsToolkit.Models;

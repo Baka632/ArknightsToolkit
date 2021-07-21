@@ -1,4 +1,5 @@
 ﻿using ArknightsResources.Models;
+using ArknightsResources.Models.WindowsRuntime;
 using ArknightsToolkit.ViewModels;
 using Microsoft.Toolkit.Uwp;
 using System;
@@ -85,7 +86,6 @@ namespace ArknightsToolkit.Views
                     _ = await OperatorListGridView.TryStartConnectedAnimationAsync(animation, _storeditem, "OperatorImage");
                 }
             }
-
             await ViewModel.InitCollection();
         }
     }

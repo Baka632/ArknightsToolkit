@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using ArknightsResources.Helpers;
+using ArknightsResources.Helpers.WindowsRuntime;
 using ArknightsResources.Models;
+using ArknightsResources.Models.WindowsRuntime;
 using Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols;
 using Windows.UI.Xaml.Media.Imaging;
 

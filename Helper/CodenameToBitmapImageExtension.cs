@@ -1,5 +1,7 @@
 ﻿using ArknightsResources.Helpers;
+using ArknightsResources.Helpers.WindowsRuntime;
 using ArknightsResources.Models;
+using ArknightsResources.Models.WindowsRuntime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
