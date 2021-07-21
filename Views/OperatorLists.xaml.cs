@@ -85,6 +85,8 @@ namespace ArknightsToolkit.Views
                     _ = await OperatorListGridView.TryStartConnectedAnimationAsync(animation, _storeditem, "OperatorImage");
                 }
             }
+
+            await ViewModel.InitCollection();
         }
     }
 }
