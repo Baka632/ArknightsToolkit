@@ -131,6 +131,14 @@
                         </Style>
                     </StackPanel.Resources>
 
+                    <muxc:Expander Padding="0" Header="皮肤描述" Visibility="{x:Bind helper:OperatorInfosGetter.IsSkinInfoDescriptionTextShow(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex), Mode=OneWay}">
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{x:Bind helper:OperatorInfosGetter.GetOperatorSkinInfoDescription(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex), Mode=OneWay}"
+                            TextWrapping="Wrap" />
+                    </muxc:Expander>
+
                     <muxc:Expander Padding="0" Header="档案">
                         <ListView
                             x:Name="profilesListView"
@@ -260,7 +268,7 @@
                             SelectedIndex="0">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate x:DataType="models:OperatorInfo">
-                                    <TextBlock Text="{x:Bind Type, Converter={StaticResource OpTypeToStringConverter}}" />
+                                    <TextBlock Text="{x:Bind helper:OperatorInfosGetter.GetOperatorTypeString(Type, SkinInfo)}" />
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
@@ -279,9 +287,9 @@
                             </Grid.Resources>
 
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="画师:" />
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{x:Bind helper:OperatorInfosGetter.GetIllustrator(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex),Mode=OneWay}" />
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{x:Bind helper:OperatorInfosGetter.GetIllustrator(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex), Mode=OneWay}" />
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="配音:" />
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind helper:OperatorInfosGetter.GetCV(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex),Mode=OneWay}" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind helper:OperatorInfosGetter.GetCV(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex), Mode=OneWay}" />
                         </Grid>
                     </StackPanel>
                 </StackPanel>

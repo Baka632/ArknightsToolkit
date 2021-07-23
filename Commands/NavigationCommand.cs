@@ -9,9 +9,9 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace ArknightsToolkit.Commands
 {
-    class NavigationCommand : DelegateCommand
+    internal sealed class NavigationCommand : DelegateCommand
     {
-        public NavigationCommand(Type page,object parameter, NavigationTransitionInfo transitionInfo = null)
+        internal NavigationCommand(Type page, object parameter, NavigationTransitionInfo transitionInfo = null)
         {
             ExecuteAction = (object obj) =>
             {

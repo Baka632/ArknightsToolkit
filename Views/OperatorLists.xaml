@@ -108,7 +108,7 @@
         <!--#endregion-->
     </Page.Resources>
 
-    <Grid>
+    <Grid RequestedTheme="Dark">
         <Grid.Background>
             <ImageBrush ImageSource="{x:Bind ViewModel.BackgroundImage, Mode=OneWay}" Opacity="0.6" Stretch="UniformToFill" />
         </Grid.Background>
@@ -120,7 +120,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="11,0,0,0">
-            <TextBlock RequestedTheme="Dark" Style="{StaticResource HeaderTextBlockStyle}" Text="干员图鉴" />
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="干员图鉴" />
             <TextBlock
                 FontSize="15"
                 FontWeight="Light"
@@ -264,7 +264,6 @@
                                 VerticalAlignment="Center"
                                 x:Phase="0"
                                 FontSize="15"
-                                RequestedTheme="Dark"
                                 Style="{StaticResource BaseTextBlockStyle}"
                                 Text="{x:Bind Name}" />
                             <Image

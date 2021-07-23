@@ -17,13 +17,25 @@ namespace ArknightsToolkit.ViewModels
 {
     internal class FrontPageViewModel : NotificationObject
     {
-        public NavigationCommand NavigateToOperatorsCommand { get; set; } = new NavigationCommand(typeof(OperatorLists), null);
-        public NavigationCommand NavigateToStoryPageCommand { get; set; } = new NavigationCommand(typeof(StoryPage), null);
+        public DelegateCommand NavigateToOperatorsCommand { get; }
+        public NavigationCommand NavigateToStoryPageCommand { get; } = new NavigationCommand(typeof(StoryPage), null);
 
 
         public FrontPageViewModel()
         {
-
+            NavigateToOperatorsCommand = new DelegateCommand(async (obj) =>
+            {
+                if (OptionalPackageHelper.CheckIfOperatorPackageAvailable())
+                {
+                    NavigationHelper.Navigate(typeof(OperatorLists), null);
+                }
+                else
+                {
+                    NotifyInstallPackageDialog dialog = new NotifyInstallPackageDialog();
+                    dialog.SetPackageName("Arknights Toolkit Operator Pack");
+                    _ = await dialog.ShowAsync();
+                }
+            });
         }
     }
 }

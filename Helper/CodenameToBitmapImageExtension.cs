@@ -1,7 +1,6 @@
-﻿using ArknightsResources.Helpers;
-using ArknightsResources.Helpers.WindowsRuntime;
-using ArknightsResources.Models;
+﻿using ArknightsResources.Models;
 using ArknightsResources.Models.WindowsRuntime;
+using ArknightsToolkit.OperatorPack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +14,9 @@ namespace ArknightsToolkit.Helper
 {
     public static class CodenameToBitmapImageExtension
     {
-        public static BitmapImage ToOperatorImage(this string value, OperatorType type)
+        public static BitmapImage ToOperatorImage(this string value, OperatorType type, OperatorSkinInfo skinInfo)
         {
-            byte[] array = ResourceHelper.GetOperatorImage(value, type);
+            byte[] array = ResourceHelper.GetOperatorImage(value, type, skinInfo);
             using (var stream = new InMemoryRandomAccessStream())
             {
                 stream.WriteAsync(array.AsBuffer()).GetResults();

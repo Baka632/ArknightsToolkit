@@ -87,11 +87,13 @@ namespace ArknightsToolkit.Services
                 throw new ArgumentNullException("Encoding is empty");
 
             XmlSerializer mySerializer = new XmlSerializer(typeof(T));
+
             using (MemoryStream ms = new MemoryStream(encoding.GetBytes(s)))
             {
-                using (StreamReader sr = new StreamReader(ms, encoding))
+                using (XmlTextReader reader = new XmlTextReader(ms))
                 {
-                    return (T)mySerializer.Deserialize(sr);
+                    reader.Normalization = false;
+                    return (T)mySerializer.Deserialize(reader);
                 }
             }
         }

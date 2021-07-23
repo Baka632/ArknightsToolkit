@@ -1,9 +1,9 @@
-﻿using ArknightsResources.Helpers.WindowsRuntime;
-using ArknightsResources.Models;
+﻿using ArknightsResources.Models;
 using ArknightsResources.Models.WindowsRuntime;
 using ArknightsToolkit.Commands;
 using ArknightsToolkit.Helper;
 using ArknightsToolkit.Models;
+using ArknightsToolkit.OperatorPack;
 using ArknightsToolkit.Services;
 using ArknightsToolkit.Views;
 using Microsoft.Toolkit.Uwp;
@@ -84,13 +84,17 @@ namespace ArknightsToolkit.ViewModels
         {
             if (OperatorsList is null)
             {
-                ObservableCollection<Operator> oc = await Task.Run(async () => new ObservableCollection<Operator>((await ResourceHelper.GetAllOperatorsAsync()).OperatorList));
+                ObservableCollection<Operator> oc = await Task.Run(() => 
+                {
+                    OperatorsList operatorsList = XmlService.XmlDeserialize<OperatorsList>(ResourceHelper.Operators, Encoding.UTF8);
+                    return new ObservableCollection<Operator>(operatorsList.OperatorList);
+                });
                 OperatorsList = new AdvancedCollectionView(oc, true);
                 OperatorsList.SortDescriptions.Add(new SortDescription("Name", SortDirection.Ascending));
                 OperatorsList.RefreshSorting();
                 OperatorsList.SortDescriptions.Clear();
+                OnPropertiesChanged(nameof(OperatorsList));
             }
-            OnPropertiesChanged(nameof(OperatorsList));
         }
 
         internal void RefreshCollection()
