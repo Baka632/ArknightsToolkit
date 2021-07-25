@@ -14,7 +14,7 @@
 
     <StackPanel>
         <TextBlock Text="{x:Bind sys:String.Format('你需要包{0}', ViewModel.PackageName)}" />
-        <HyperlinkButton Margin="0,10,0,0" Padding="0" Content="前往Microsoft Store安装" NavigateUri="http://www.microsoft.com" />
+        <!--<HyperlinkButton Margin="0,10,0,0" Padding="0" Content="前往Microsoft Store安装" NavigateUri="http://www.microsoft.com" />-->
         <TextBlock Text="注意,安装完成后将重新启动应用。" />
     </StackPanel>
 </ContentDialog>
