@@ -1,5 +1,6 @@
 ﻿using ArknightsResources.Models;
 using ArknightsResources.Models.WindowsRuntime;
+using ArknightsResources.Models.WindowsRuntime.Operators;
 using ArknightsToolkit.OperatorPack;
 using System;
 using System.Collections.Generic;

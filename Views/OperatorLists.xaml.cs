@@ -1,5 +1,6 @@
 ﻿using ArknightsResources.Models;
 using ArknightsResources.Models.WindowsRuntime;
+using ArknightsResources.Models.WindowsRuntime.Operators;
 using ArknightsToolkit.ViewModels;
 using Microsoft.Toolkit.Uwp;
 using System;
