@@ -246,15 +246,15 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ArknightsResources\ArknightsResources.Models\ArknightsResources.Models.csproj">
+      <Project>{da0c858f-df15-4e1c-bf9a-6325c0fd1ed4}</Project>
+      <Name>ArknightsResources.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="ArknightsToolkit.OperatorPack">
       <HintPath>..\ArknightsToolkit.OperatorPack\bin\x64\Debug\Reference\ArknightsToolkit.OperatorPack.winmd</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ArknightsResources\ArknightsResources.Models.WindowsRuntime\ArknightsResources.Models.WindowsRuntime.csproj">
-      <Project>{6941359F-9731-4CB7-A334-B920DA8E5C24}</Project>
-      <Name>ArknightsResources.Models.WindowsRuntime</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

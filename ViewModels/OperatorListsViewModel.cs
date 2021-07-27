@@ -1,6 +1,5 @@
 ﻿using ArknightsResources.Models;
-using ArknightsResources.Models.WindowsRuntime;
-using ArknightsResources.Models.WindowsRuntime.Operators;
+using ArknightsResources.Models.Operators;
 using ArknightsToolkit.Commands;
 using ArknightsToolkit.Helper;
 using ArknightsToolkit.Models;
@@ -85,7 +84,7 @@ namespace ArknightsToolkit.ViewModels
         {
             if (OperatorsList is null)
             {
-                ObservableCollection<Operator> oc = await Task.Run(() => 
+                ObservableCollection<Operator> oc = await Task.Run(() =>
                 {
                     Operator[] operatorsList = XmlService.XmlDeserialize<Operator[]>(ResourceHelper.Operators, Encoding.UTF8);
                     return new ObservableCollection<Operator>(operatorsList);

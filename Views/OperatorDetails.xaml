@@ -6,7 +6,7 @@
     xmlns:helper="using:ArknightsToolkit.Helper"
     xmlns:local="using:ArknightsToolkit.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:ArknightsResources.Models.WindowsRuntime.Operators"
+    xmlns:models="using:ArknightsResources.Models.Operators"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:viewmodels="using:ArknightsToolkit.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:OperatorDetailsViewModel}"
@@ -289,7 +289,7 @@
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="画师:" />
                             <TextBlock Grid.Row="0" Grid.Column="1" Text="{x:Bind helper:OperatorInfosGetter.GetIllustrator(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex), Mode=OneWay}" />
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="配音:" />
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind helper:OperatorInfosGetter.GetCV(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex), Mode=OneWay}" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind helper:OperatorInfosGetter.GetForeignCV(ViewModel.CurrentOperator, OperatorInformationComboBox.SelectedIndex), Mode=OneWay}" />
                         </Grid>
                     </StackPanel>
                 </StackPanel>

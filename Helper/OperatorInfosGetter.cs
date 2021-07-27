@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using ArknightsResources.Models;
-using ArknightsResources.Models.WindowsRuntime;
-using ArknightsResources.Models.WindowsRuntime.Operators;
+using ArknightsResources.Models.Operators;
 using ArknightsToolkit.OperatorPack;
 using Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols;
 using Windows.UI.Xaml;
@@ -13,13 +11,13 @@ namespace ArknightsToolkit.Helper
     {
         public static BitmapImage GetImage(Operator op, int index)
         {
-            byte[] image = ResourceHelper.GetOperatorImage(op.ImageCodename, op.Information[index].Type, op.Information[index].SkinInfo);
+            byte[] image = ResourceHelper.GetOperatorImage(op.ImageCodename, op.Information[index].Type.ToString(), op.Information[index].SkinInfo.ToString());
             return image.AsBitmapImage();
         }
 
         public static BitmapImage GetImage(string codename)
         {
-            byte[] image = ResourceHelper.GetOperatorImage(codename, OperatorType.Elite0, null);
+            byte[] image = ResourceHelper.GetOperatorImage(codename, OperatorType.Elite0.ToString(), null);
             return image.AsBitmapImage();
         }
 
@@ -34,10 +32,16 @@ namespace ArknightsToolkit.Helper
             return info.Class.ToClassImage();
         }
 
-        public static string GetCV(Operator op, int index)
+        public static string GetForeignCV(Operator op, int index)
         {
             OperatorInfo info = op.Information[index];
-            return info.CV;
+            return info.ForeignCV;
+        }
+
+        public static string GetChineseCV(Operator op, int index)
+        {
+            OperatorInfo info = op.Information[index];
+            return info.ChineseCV;
         }
 
         public static string GetIllustrator(Operator op, int index)
