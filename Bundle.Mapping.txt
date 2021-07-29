@@ -1,2 +1,2 @@
 ﻿[OptionalProjects]
-"E:\Code\ArknightsToolkit.OperatorPack\ArknightsToolkit.OperatorPack.csproj"
+"..\ArknightsToolkit.OperatorPack\ArknightsToolkit.OperatorPack.csproj"
