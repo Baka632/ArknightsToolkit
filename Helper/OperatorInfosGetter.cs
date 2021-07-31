@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using ArknightsResources.Models.Operators;
 using ArknightsToolkit.OperatorPack;
-using Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Imaging;
 
