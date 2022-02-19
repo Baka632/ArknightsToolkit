@@ -1,5 +1,5 @@
-﻿using ArknightsResources.Models.Operators;
-using ArknightsToolkit.OperatorPack;
+﻿using ArknightsResources.Operators;
+using ArknightsResources.Operators.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace ArknightsToolkit.Helper
     {
         public static BitmapImage ToOperatorImage(this string value, OperatorType type, OperatorSkinInfo skinInfo)
         {
-            byte[] array = ResourceHelper.GetOperatorImage(value, type.ToString(), skinInfo.ToString());
+            byte[] array = ResourceHelper.GetOperatorImage(value, type, skinInfo);
             using (var stream = new InMemoryRandomAccessStream())
             {
                 stream.WriteAsync(array.AsBuffer()).GetResults();

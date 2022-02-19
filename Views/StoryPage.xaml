@@ -8,13 +8,17 @@
     xmlns:local="using:ArknightsToolkit.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="using:ArknightsToolkit.Models"
+    xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
     xmlns:viewmodel="using:ArknightsToolkit.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/UI/ui_story_background3.png" Opacity="0.4" Stretch="UniformToFill" />
+            <ImageBrush
+                ImageSource="/Assets/UI/ui_story_background3.png"
+                Opacity="0.4"
+                Stretch="UniformToFill" />
         </Grid.Background>
 
         <Image
@@ -37,6 +41,7 @@
                     <Setter Property="Height" Value="300" />
                     <Setter Property="Width" Value="200" />
                 </Style>
+                <ui:AttachedDropShadow x:Key="CommonShadow" Offset="0,4" />
             </GridView.Resources>
 
             <GridView.Triggers>
@@ -96,28 +101,31 @@
                             </Image.Triggers>
                         </Image>
 
-                        <controls:DropShadowPanel OffsetY="4">
-                            <StackPanel
-                                Width="150"
-                                Padding="5"
-                                Background="#313131"
-                                BorderBrush="White"
-                                BorderThickness="1">
-                                <TextBlock
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Bottom"
-                                    FontWeight="Medium"
-                                    Foreground="White"
-                                    Text="{x:Bind Title, Mode=OneWay}" />
-                            </StackPanel>
-                        </controls:DropShadowPanel>
+                        <StackPanel
+                            Width="150"
+                            Padding="5"
+                            ui:Effects.Shadow="{StaticResource CommonShadow}"
+                            Background="#313131"
+                            BorderBrush="White"
+                            BorderThickness="1">
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                FontWeight="Medium"
+                                Foreground="White"
+                                Text="{x:Bind Title, Mode=OneWay}" />
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
 
         <StackPanel Margin="11,0,0,0">
-            <TextBlock Grid.Row="0" Style="{StaticResource HeaderTextBlockStyle}" Text="游戏剧情" />
+            <TextBlock
+                Grid.Row="0"
+                Style="{StaticResource HeaderTextBlockStyle}"
+                Text="游戏剧情" />
             <TextBlock
                 FontSize="20"
                 FontStyle="Italic"

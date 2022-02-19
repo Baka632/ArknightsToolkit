@@ -1,5 +1,4 @@
-﻿using ArknightsResources.Models;
-using ArknightsResources.Models.Operators;
+﻿using ArknightsResources.Operators.Models;
 using ArknightsToolkit.ViewModels;
 using Microsoft.Toolkit.Uwp;
 using System;

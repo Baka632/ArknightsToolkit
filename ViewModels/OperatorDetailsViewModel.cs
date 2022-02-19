@@ -1,7 +1,4 @@
-﻿using ArknightsResources.Models;
-using ArknightsResources.Models.Operators;
-using ArknightsToolkit.Commands;
-using ArknightsToolkit.Helper;
+﻿using ArknightsResources.Operators.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

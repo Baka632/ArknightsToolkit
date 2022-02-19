@@ -1,5 +1,4 @@
 ﻿using ArknightsToolkit.Helper;
-using ArknightsToolkit.Services;
 using ArknightsToolkit.Views;
 using System;
 using System.Collections.Generic;

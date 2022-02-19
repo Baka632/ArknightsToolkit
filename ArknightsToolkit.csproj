@@ -11,7 +11,7 @@
     <AssemblyName>ArknightsToolkit</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.22000.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -132,13 +132,11 @@
     <Compile Include="Helper\Converter\OperatorProfileTypeToStringConverter.cs" />
     <Compile Include="Helper\OperatorComparerOption.cs" />
     <Compile Include="Helper\Converter\OperatorTypeToStringConverter.cs" />
-    <Compile Include="Helper\OptionalPackageHelper.cs" />
     <Compile Include="Models\StoryButtonInfomation.cs" />
     <Compile Include="Helper\NavigationHelper.cs" />
     <Compile Include="Helper\TitleBarHelper.cs" />
     <Compile Include="ViewModels\FrontPageViewModel.cs" />
     <Compile Include="ViewModels\NotificationObject.cs" />
-    <Compile Include="ViewModels\NotifyInstallPackageDialogViewModel.cs" />
     <Compile Include="ViewModels\OperatorDetailsViewModel.cs" />
     <Compile Include="ViewModels\OperatorListsViewModel.cs" />
     <Compile Include="ViewModels\StoryPageViewModel.cs" />
@@ -149,11 +147,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\XmlService.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Compile Include="Views\NotifyInstallPackageDialog.xaml.cs">
-      <DependentUpon>NotifyInstallPackageDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\OperatorDetails.xaml.cs">
       <DependentUpon>OperatorDetails.xaml</DependentUpon>
     </Compile>
@@ -187,7 +181,6 @@
     <Content Include="Assets\UI\ui_specialist.png" />
     <Content Include="Assets\UI\ui_supporter.png" />
     <Content Include="Assets\UI\ui_vanguard.png" />
-    <Content Include="Bundle.Mapping.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -214,10 +207,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\NotifyInstallPackageDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\OperatorDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,29 +221,32 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
+      <Version>6.0.0</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.12</Version>
+      <Version>6.2.13</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
-      <Version>7.0.2</Version>
+      <Version>7.1.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
-      <Version>7.0.2</Version>
+      <Version>7.1.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.6.1</Version>
+      <Version>2.7.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArknightsResources\ArknightsResources.Models\ArknightsResources.Models.csproj">
-      <Project>{da0c858f-df15-4e1c-bf9a-6325c0fd1ed4}</Project>
-      <Name>ArknightsResources.Models</Name>
+    <ProjectReference Include="..\ArknightsResources\ArknightsResources.Operators\ArknightsResources.Operators.csproj">
+      <Project>{e84b2ecc-f6ab-4748-863d-3975ac31b958}</Project>
+      <Name>ArknightsResources.Operators</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ArknightsToolkit.OperatorPack">
-      <HintPath>..\ArknightsToolkit.OperatorPack\bin\x64\Debug\Reference\ArknightsToolkit.OperatorPack.winmd</HintPath>
-    </Reference>
+    <Folder Include="Services\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using ArknightsResources.Models.Operators;
-using ArknightsToolkit.OperatorPack;
+using ArknightsResources.Operators;
+using ArknightsResources.Operators.Models;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -10,13 +10,13 @@ namespace ArknightsToolkit.Helper
     {
         public static BitmapImage GetImage(Operator op, int index)
         {
-            byte[] image = ResourceHelper.GetOperatorImage(op.ImageCodename, op.Information[index].Type.ToString(), op.Information[index].SkinInfo.ToString());
+            byte[] image = ResourceHelper.GetOperatorImage(op.ImageCodename, op.Information[index].Type, op.Information[index].SkinInfo);
             return image.AsBitmapImage();
         }
 
         public static BitmapImage GetImage(string codename)
         {
-            byte[] image = ResourceHelper.GetOperatorImage(codename, OperatorType.Elite0.ToString(), null);
+            byte[] image = ResourceHelper.GetOperatorImage(codename, OperatorType.Elite0, null);
             return image.AsBitmapImage();
         }
 

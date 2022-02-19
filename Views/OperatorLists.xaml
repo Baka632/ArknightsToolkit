@@ -7,7 +7,7 @@
     xmlns:helper="using:ArknightsToolkit.Helper"
     xmlns:local="using:ArknightsToolkit.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:model="using:ArknightsResources.Models.Operators"
+    xmlns:model="using:ArknightsResources.Operators.Models"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:viewmodel="using:ArknightsToolkit.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"

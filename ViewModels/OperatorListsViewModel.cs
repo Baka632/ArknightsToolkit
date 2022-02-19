@@ -1,20 +1,11 @@
-﻿using ArknightsResources.Models;
-using ArknightsResources.Models.Operators;
+﻿using ArknightsResources.Operators;
+using ArknightsResources.Operators.Models;
 using ArknightsToolkit.Commands;
 using ArknightsToolkit.Helper;
-using ArknightsToolkit.Models;
-using ArknightsToolkit.OperatorPack;
-using ArknightsToolkit.Services;
 using ArknightsToolkit.Views;
-using Microsoft.Toolkit.Uwp;
 using Microsoft.Toolkit.Uwp.UI;
-using Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
@@ -84,9 +75,9 @@ namespace ArknightsToolkit.ViewModels
         {
             if (OperatorsList is null)
             {
-                ObservableCollection<Operator> oc = await Task.Run(() =>
+                ObservableCollection<Operator> oc = await Task.Run(async () =>
                 {
-                    Operator[] operatorsList = XmlService.XmlDeserialize<Operator[]>(ResourceHelper.Operators, Encoding.UTF8);
+                    Operator[] operatorsList = await ResourceHelper.GetAllOperatorsAsync();
                     return new ObservableCollection<Operator>(operatorsList);
                 });
                 OperatorsList = new AdvancedCollectionView(oc, true);
