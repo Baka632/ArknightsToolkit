@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace ArknightsToolkit.Helper
+namespace ArknightsToolkit.Helper.Converter
 {
     public class OperatorProfileTypeToStringConverter : IValueConverter
     {
@@ -33,12 +33,6 @@ namespace ArknightsToolkit.Helper
                     return "晋升记录";
                 case OperatorProfileType.Promotion1:
                     return "升变档案一";
-                case OperatorProfileType.Promotion2:
-                    return "升变档案二";
-                case OperatorProfileType.Promotion3:
-                    return "升变档案三";
-                case OperatorProfileType.Promotion4:
-                    return "升变档案四";
                 case OperatorProfileType.Unknown:
                     return "？？？";
                 default:

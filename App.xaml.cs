@@ -1,4 +1,5 @@
 ﻿using ArknightsToolkit.Views;
+using Microsoft.Toolkit.Uwp.UI;
 using System;
 using System.Diagnostics;
 using Windows.ApplicationModel;
@@ -69,6 +70,9 @@ namespace ArknightsToolkit
                 // 确保当前窗口处于活动状态
                 Window.Current.Activate();
             }
+
+            //ImageCache.Instance.CacheDuration = TimeSpan.FromHours(1);
+            //ImageCache.Instance.MaxMemoryCacheCount = 100;
         }
 
         /// <summary>

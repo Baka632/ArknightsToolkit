@@ -9,27 +9,25 @@ using Windows.UI.Xaml.Data;
 
 namespace ArknightsToolkit.Helper.Converter
 {
-    public class OperatorTypeToStringConverter : IValueConverter
+    internal class OperatorVocalTypeToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             switch (value)
             {
-                case OperatorType type:
+                case OperatorVocalType type:
                     switch (type)
                     {
-                        case OperatorType.Elite0:
-                            return "精零";
-                        case OperatorType.Elite1:
-                            return "精一";
-                        case OperatorType.Elite2:
-                            return "精二";
-                        case OperatorType.Skin:
-                            return "皮肤";
-                        case OperatorType.Promotion:
-                            return "升变";
+                        case OperatorVocalType.ChineseMandarin:
+                            return "中文普通话";
+                        case OperatorVocalType.ChineseDialect:
+                            return "中文方言";
+                        case OperatorVocalType.Japanese:
+                            return "日语";
+                        case OperatorVocalType.English:
+                            return "英语";
                         default:
-                            goto default;
+                            return DependencyProperty.UnsetValue;
                     }
                 default:
                     return DependencyProperty.UnsetValue;

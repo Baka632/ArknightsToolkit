@@ -1,11 +1,13 @@
 ﻿using ArknightsResources.Operators;
 using ArknightsResources.Operators.Models;
+using ArknightsResources.Operators.Resources;
 using ArknightsToolkit.Commands;
 using ArknightsToolkit.Helper;
 using ArknightsToolkit.Views;
 using Microsoft.Toolkit.Uwp.UI;
 using System;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
@@ -77,7 +79,7 @@ namespace ArknightsToolkit.ViewModels
             {
                 ObservableCollection<Operator> oc = await Task.Run(async () =>
                 {
-                    Operator[] operatorsList = await ResourceHelper.GetAllOperatorsAsync();
+                    Operator[] operatorsList = await ResourceHelper.GetAllOperatorsAsync(CultureInfo.DefaultThreadCurrentUICulture);
                     return new ObservableCollection<Operator>(operatorsList);
                 });
                 OperatorsList = new AdvancedCollectionView(oc, true);

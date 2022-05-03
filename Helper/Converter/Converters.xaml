@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-    xmlns:helper="using:ArknightsToolkit.Helper">
+    xmlns:helper="using:ArknightsToolkit.Helper.Converter">
     <helper:OperatorTypeToStringConverter x:Key="OpTypeToStringConverter" />
     <helper:OperatorProfileTypeToStringConverter x:Key="OpProfileTypeToStringConverter" />
+    <helper:OperatorVocalTypeToStringConverter x:Key="OpVocalTypeToStringConverter" />
 </ResourceDictionary>

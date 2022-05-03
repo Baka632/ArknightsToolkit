@@ -1,5 +1,6 @@
 ﻿using ArknightsToolkit.Helper;
 using ArknightsToolkit.ViewModels;
+using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 
@@ -14,6 +15,7 @@ namespace ArknightsToolkit.Views
     {
         private MainPageViewModel ViewModel { get; }
         private bool IsTitleBarTextBlockInBegun = false;
+        internal static readonly DispatcherQueue DispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
         public MainPage()
         {

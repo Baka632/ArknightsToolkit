@@ -1,6 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using ArknightsResources.Operators;
 using ArknightsResources.Operators.Models;
+using ArknightsResources.Operators.Resources;
+using Microsoft.Toolkit.Uwp.UI;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -10,48 +20,35 @@ namespace ArknightsToolkit.Helper
     {
         public static BitmapImage GetImage(Operator op, int index)
         {
-            byte[] image = ResourceHelper.GetOperatorImage(op.ImageCodename, op.Information[index].Type, op.Information[index].SkinInfo);
+            Image<Bgra32> image = ResourceHelper.GetOperatorImageReturnImage(op.Illustrations[index]);
             return image.AsBitmapImage();
         }
 
         public static BitmapImage GetImage(string codename)
         {
-            byte[] image = ResourceHelper.GetOperatorImage(codename, OperatorType.Elite0, null);
+            Operator op = ResourceHelper.GetOperatorWithCodename(codename, CultureInfo.CurrentUICulture);
+            Image<Bgra32> image = ResourceHelper.GetOperatorImageReturnImage(op.Illustrations.First());
             return image.AsBitmapImage();
         }
 
-        public static BitmapImage GetClassImage(Operator op, int index)
+        public static BitmapImage GetClassImage(Operator op)
         {
-            OperatorInfo info = op.Information[index];
-            return info.Class.ToClassImage();
+            return op.Class.ToClassImage();
         }
 
-        public static BitmapImage GetClassImage(OperatorInfo info)
+        public static BitmapImage GetClassImage(OperatorClass opClass)
         {
-            return info.Class.ToClassImage();
-        }
-
-        public static string GetForeignCV(Operator op, int index)
-        {
-            OperatorInfo info = op.Information[index];
-            return info.ForeignCV;
-        }
-
-        public static string GetChineseCV(Operator op, int index)
-        {
-            OperatorInfo info = op.Information[index];
-            return info.ChineseCV;
+            return opClass.ToClassImage();
         }
 
         public static string GetIllustrator(Operator op, int index)
         {
-            OperatorInfo info = op.Information[index];
-            return info.Illustrator;
+            return op.Illustrations[index].Illustrator;
         }
 
-        public static string GetOperatorTypeString(OperatorType operatorType, OperatorSkinInfo? skinInfo)
+        public static string GetOperatorTypeString(OperatorType type,string illustrationName)
         {
-            switch (operatorType)
+            switch (type)
             {
                 case OperatorType.Elite0:
                     return "精零";
@@ -60,7 +57,7 @@ namespace ArknightsToolkit.Helper
                 case OperatorType.Elite2:
                     return "精二";
                 case OperatorType.Skin:
-                    return skinInfo.Value.Name;
+                    return illustrationName;
                 case OperatorType.Promotion:
                     return "升变";
                 default:
@@ -70,19 +67,7 @@ namespace ArknightsToolkit.Helper
 
         public static string GetOperatorSkinInfoDescription(Operator op, int index)
         {
-            return op.Information[index].SkinInfo?.Description;
-        }
-
-        public static Visibility IsSkinInfoDescriptionTextShow(Operator op, int index)
-        {
-            if (op.Information[index].SkinInfo != null)
-            {
-                return Visibility.Visible;
-            }
-            else
-            {
-                return Visibility.Collapsed;
-            }
+            return op.Illustrations[index].Description;
         }
     }
 }
