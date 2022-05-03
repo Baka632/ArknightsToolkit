@@ -263,7 +263,7 @@
 
                         <RatingControl
                             Grid.Row="0"
-                            x:Phase="1"
+                            x:Phase="0"
                             IsEnabled="False"
                             MaxRating="{x:Bind Star}"
                             Style="{StaticResource OperatorRatingControlStyle}"
@@ -293,7 +293,7 @@
                                 Height="30"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
-                                x:Phase="1"
+                                x:Phase="0"
                                 Source="{x:Bind helper:OperatorInfosGetter.GetClassImage(Class)}" />
                         </Grid>
                     </Grid>

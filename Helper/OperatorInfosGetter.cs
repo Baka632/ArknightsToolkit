@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -18,17 +19,39 @@ namespace ArknightsToolkit.Helper
 {
     public class OperatorInfosGetter
     {
+        internal static ConcurrentDictionary<string, BitmapImage> dict = new ConcurrentDictionary<string, BitmapImage>(5, 100);
+
         public static BitmapImage GetImage(Operator op, int index)
         {
-            Image<Bgra32> image = ResourceHelper.GetOperatorImageReturnImage(op.Illustrations[index]);
-            return image.AsBitmapImage();
+            if (dict.TryGetValue(op.Illustrations[index].ImageCodename, out BitmapImage image))
+            {
+                return image;
+            }
+            else
+            {
+                image = ResourceHelper.GetOperatorImageReturnImage(op.Illustrations[index]).AsBitmapImage();
+                dict.TryAdd(op.Illustrations[index].ImageCodename, image);
+            }
+            return image;
         }
 
         public static BitmapImage GetImage(string codename)
         {
             Operator op = ResourceHelper.GetOperatorWithCodename(codename, CultureInfo.CurrentUICulture);
-            Image<Bgra32> image = ResourceHelper.GetOperatorImageReturnImage(op.Illustrations.First());
-            return image.AsBitmapImage();
+
+            OperatorIllustrationInfo illustInfo = op.Illustrations.First();
+
+            if (dict.TryGetValue(illustInfo.ImageCodename, out BitmapImage image))
+            {
+                return image;
+            }
+            else
+            {
+                image = ResourceHelper.GetOperatorImageReturnImage(illustInfo).AsBitmapImage();
+                dict.TryAdd(illustInfo.ImageCodename, image);
+            }
+
+            return image;
         }
 
         public static BitmapImage GetClassImage(Operator op)

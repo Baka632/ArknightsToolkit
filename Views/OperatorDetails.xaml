@@ -145,11 +145,14 @@
                     </StackPanel.Resources>
 
                     <muxc:Expander Padding="0" Header="立绘描述">
-                        <TextBlock
+                        <RichTextBlock
                             Grid.Row="0"
                             Grid.Column="1"
-                            Text="{x:Bind helper:OperatorInfosGetter.GetOperatorSkinInfoDescription(ViewModel.CurrentOperator, OperatorIllustrationsComboBox.SelectedIndex), Mode=OneWay}"
-                            TextWrapping="Wrap" />
+                            TextWrapping="Wrap">
+                            <Paragraph>
+                                <Run Text="{x:Bind helper:OperatorInfosGetter.GetOperatorSkinInfoDescription(ViewModel.CurrentOperator, OperatorIllustrationsComboBox.SelectedIndex), Mode=OneWay}" />
+                            </Paragraph>
+                        </RichTextBlock>
                     </muxc:Expander>
 
                     <muxc:Expander Padding="0" Header="档案">
