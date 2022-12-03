@@ -127,6 +127,7 @@
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\NavigationCommand.cs" />
     <Compile Include="Helper\ByteArrayToBitmapImageExtension.cs" />
+    <Compile Include="Helper\Converter\IllustToBitmapImageConverter.cs" />
     <Compile Include="Helper\Converter\OperatorVocalTypeToStringConverter.cs" />
     <Compile Include="Helper\OperatorInfosGetter.cs" />
     <Compile Include="Helper\CodenameToBitmapImageExtension.cs" />
@@ -222,6 +223,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="ArknightsResources.Operators.Resources">
+      <Version>0.2.1-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="ArknightsResources.Utility">
+      <Version>0.1.5-alpha</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
       <Version>6.0.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -245,16 +252,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ArknightsResources\ArknightsResources.Operators.Models\ArknightsResources.Operators.Models.csproj">
-      <Project>{e86dbe06-f941-4ae1-8ff6-e3a04ab0be50}</Project>
-      <Name>ArknightsResources.Operators.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ArknightsResources\ArknightsResources.Operators.Resources\ArknightsResources.Operators.Resources.csproj">
-      <Project>{acf9800c-7ea0-4d15-95b8-1ac30466691c}</Project>
-      <Name>ArknightsResources.Operators.Resources</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

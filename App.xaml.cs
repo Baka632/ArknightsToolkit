@@ -1,5 +1,5 @@
-﻿using ArknightsToolkit.Views;
-using Microsoft.Toolkit.Uwp.UI;
+﻿using ArknightsResources.Utility;
+using ArknightsToolkit.Views;
 using System;
 using System.Diagnostics;
 using Windows.ApplicationModel;
@@ -7,6 +7,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using OperatorResources = ArknightsResources.Operators.Resources.Properties.Resources;
 
 namespace ArknightsToolkit
 {
@@ -71,8 +72,7 @@ namespace ArknightsToolkit
                 Window.Current.Activate();
             }
 
-            //ImageCache.Instance.CacheDuration = TimeSpan.FromHours(1);
-            //ImageCache.Instance.MaxMemoryCacheCount = 100;
+            OperatorResourceHelper.Instance.ResourceManager = OperatorResources.ResourceManager;
         }
 
         /// <summary>

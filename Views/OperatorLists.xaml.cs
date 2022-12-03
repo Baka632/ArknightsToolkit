@@ -92,17 +92,12 @@ namespace ArknightsToolkit.Views
             await ViewModel.InitCollection();
         }
 
-
-        //private async void OperatorImage_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    if (sender is ImageEx image && image.Source is null)
-        //    {
-        //        string codename = (image.DataContext as Operator).ImageCodename;
-        //        image.Source = await Task.Run(() =>
-        //        {
-        //             return OperatorInfosGetter.GetImage(codename);
-        //        });
-        //    }
-        //}
+        private async void OperatorImage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (sender is ImageEx image && image.Source is null && image.DataContext is Operator op)
+            {
+                image.Source = await OperatorInfosGetter.GetImageAsync(op.Illustrations[0]);
+            }
+        }
     }
 }

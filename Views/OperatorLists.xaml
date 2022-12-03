@@ -127,8 +127,8 @@
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -274,10 +274,10 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             x:Phase="2"
-                            DataContext="{x:Bind ImageCodename}"
                             EnableLazyLoading="True"
                             IsCacheEnabled="True"
-                            Source="{x:Bind helper:OperatorInfosGetter.GetImage(ImageCodename), Mode=OneWay}"
+                            Loaded="OperatorImage_Loaded"
+                            DataContext="{x:Bind}"
                             Stretch="Uniform" />
 
                         <Grid Grid.Row="2">

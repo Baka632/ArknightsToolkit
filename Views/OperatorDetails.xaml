@@ -241,7 +241,7 @@
                         VerticalAlignment="Center"
                         EnableLazyLoading="True"
                         IsCacheEnabled="True"
-                        Source="{x:Bind helper:OperatorInfosGetter.GetImage(ViewModel.CurrentOperator, OperatorIllustrationsComboBox.SelectedIndex), Mode=OneWay}"
+                        Loaded="OperatorImage_Loaded"
                         Stretch="Uniform" />
                 </ScrollViewer>
 
@@ -348,6 +348,7 @@
                             Margin="10,0,0,0"
                             VerticalAlignment="Center"
                             ItemsSource="{x:Bind ViewModel.CurrentOperator.Illustrations}"
+                            SelectionChanged="OperatorIllustrationsComboBox_SelectionChanged"
                             SelectedIndex="0">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate x:DataType="models:OperatorIllustrationInfo">

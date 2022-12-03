@@ -35,8 +35,10 @@ namespace ArknightsToolkit.Helper
         {
             using (var stream = new InMemoryRandomAccessStream())
             {
+                stream.Seek(0);
                 stream.WriteAsync(byteArray.AsBuffer()).GetResults();
                 stream.Seek(0);
+
                 BitmapImage bmp = new BitmapImage();
                 bmp.SetSource(stream);
                 return bmp;

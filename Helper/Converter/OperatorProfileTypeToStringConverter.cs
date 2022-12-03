@@ -15,21 +15,23 @@ namespace ArknightsToolkit.Helper.Converter
         {
             switch (value)
             {
-                case OperatorProfileType.BasicProfile:
+                case OperatorProfileType.BasicInfo:
                     return "基础档案";
+                case OperatorProfileType.PhysicalExam:
+                    return "综合体检测试";
                 case OperatorProfileType.ObjectiveProfile:
                     return "客观履历";
                 case OperatorProfileType.ClinicalAnalysis:
                     return "临床诊断分析";
-                case OperatorProfileType.File1:
+                case OperatorProfileType.ArchiveFile1:
                     return "档案资料一";
-                case OperatorProfileType.File2:
+                case OperatorProfileType.ArchiveFile2:
                     return "档案资料二";
-                case OperatorProfileType.File3:
+                case OperatorProfileType.ArchiveFile3:
                     return "档案资料三";
-                case OperatorProfileType.File4:
+                case OperatorProfileType.ArchiveFile4:
                     return "档案资料四";
-                case OperatorProfileType.PromotionRecord:
+                case OperatorProfileType.PromotionFile:
                     return "晋升记录";
                 case OperatorProfileType.Promotion1:
                     return "升变档案一";

@@ -15,11 +15,13 @@ namespace ArknightsToolkit.Views
     {
         private MainPageViewModel ViewModel { get; }
         private bool IsTitleBarTextBlockInBegun = false;
+        public static CoreDispatcher CoreDispatcher { get; private set; }
         internal static readonly DispatcherQueue DispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
         public MainPage()
         {
             this.InitializeComponent();
+            CoreDispatcher = Dispatcher;
             ViewModel = new MainPageViewModel(ContentFrame);
             TitleBarHelper.BackButtonVisibilityChangedEvent += TitleBarHelper_BackButtonVisibilityChangedEvent;
         }

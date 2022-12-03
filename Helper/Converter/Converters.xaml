@@ -5,4 +5,5 @@
     <helper:OperatorTypeToStringConverter x:Key="OpTypeToStringConverter" />
     <helper:OperatorProfileTypeToStringConverter x:Key="OpProfileTypeToStringConverter" />
     <helper:OperatorVocalTypeToStringConverter x:Key="OpVocalTypeToStringConverter" />
+    <helper:IllustToBitmapImageConverter x:Key="IllustToBitmapImageConverter" />
 </ResourceDictionary>

@@ -1,6 +1,7 @@
 ﻿using ArknightsResources.Operators;
 using ArknightsResources.Operators.Models;
 using ArknightsResources.Operators.Resources;
+using ArknightsResources.Utility;
 using ArknightsToolkit.Commands;
 using ArknightsToolkit.Helper;
 using ArknightsToolkit.Views;
@@ -79,8 +80,8 @@ namespace ArknightsToolkit.ViewModels
             {
                 ObservableCollection<Operator> oc = await Task.Run(async () =>
                 {
-                    Operator[] operatorsList = await ResourceHelper.GetAllOperatorsAsync(CultureInfo.DefaultThreadCurrentUICulture);
-                    return new ObservableCollection<Operator>(operatorsList);
+                    OperatorsList operatorsList = await OperatorResourceHelper.Instance.GetAllOperatorsAsync(CultureInfo.DefaultThreadCurrentUICulture);
+                    return new ObservableCollection<Operator>(operatorsList.ToArray());
                 });
                 OperatorsList = new AdvancedCollectionView(oc, true);
                 OperatorsList.SortDescriptions.Add(new SortDescription("Name", SortDirection.Ascending));

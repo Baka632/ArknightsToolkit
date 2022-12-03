@@ -1,6 +1,6 @@
-﻿using ArknightsResources.Operators;
-using ArknightsResources.Operators.Models;
+﻿using ArknightsResources.Operators.Models;
 using ArknightsResources.Operators.Resources;
+using ArknightsResources.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +14,12 @@ namespace ArknightsToolkit.Helper
 {
     public static class CodenameToBitmapImageExtension
     {
-        public static BitmapImage ToOperatorImage(this OperatorIllustrationInfo value)
+        public static async Task<BitmapImage> ToOperatorImage(this OperatorIllustrationInfo value)
         {
-            byte[] array = ResourceHelper.GetOperatorImage(value);
+            byte[] array = OperatorResourceHelper.Instance.GetOperatorImage(value);
             using (var stream = new InMemoryRandomAccessStream())
             {
-                stream.WriteAsync(array.AsBuffer()).GetResults();
+                await stream.WriteAsync(array.AsBuffer());
                 stream.Seek(0);
                 BitmapImage bmp = new BitmapImage();
                 bmp.SetSource(stream);

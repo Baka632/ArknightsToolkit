@@ -20,12 +20,14 @@ namespace ArknightsToolkit.Helper.Converter
                     {
                         case OperatorVocalType.ChineseMandarin:
                             return "中文普通话";
-                        case OperatorVocalType.ChineseDialect:
+                        case OperatorVocalType.ChineseRegional:
                             return "中文方言";
                         case OperatorVocalType.Japanese:
                             return "日语";
                         case OperatorVocalType.English:
                             return "英语";
+                        case OperatorVocalType.Korean:
+                            return "韩语";
                         default:
                             return DependencyProperty.UnsetValue;
                     }
