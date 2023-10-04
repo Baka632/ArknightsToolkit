@@ -26,10 +26,8 @@ namespace ArknightsToolkit.Helper.Converter
                             return "精二";
                         case OperatorType.Skin:
                             return "皮肤";
-                        case OperatorType.Promotion:
-                            return "升变";
                         default:
-                            goto default;
+                            return string.Empty;
                     }
                 default:
                     return DependencyProperty.UnsetValue;

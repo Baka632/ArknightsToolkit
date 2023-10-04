@@ -1,22 +1,21 @@
 ﻿using ArknightsResources.Operators.Models;
-using ArknightsResources.Operators.Resources;
 using ArknightsResources.Utility;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
+using OperatorResources = ArknightsResources.Operators.IllustResources.Properties.Resources;
 
 namespace ArknightsToolkit.Helper
 {
     public static class CodenameToBitmapImageExtension
     {
+        private static readonly OperatorIllustResourceHelper operatorResourceHelper = new OperatorIllustResourceHelper(OperatorResources.ResourceManager);
+
         public static async Task<BitmapImage> ToOperatorImage(this OperatorIllustrationInfo value)
         {
-            byte[] array = OperatorResourceHelper.Instance.GetOperatorImage(value);
+            byte[] array = operatorResourceHelper.GetOperatorIllustration(value);
             using (var stream = new InMemoryRandomAccessStream())
             {
                 await stream.WriteAsync(array.AsBuffer());

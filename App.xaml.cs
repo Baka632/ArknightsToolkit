@@ -1,5 +1,4 @@
-﻿using ArknightsResources.Utility;
-using ArknightsToolkit.Views;
+﻿using ArknightsToolkit.Views;
 using System;
 using System.Diagnostics;
 using Windows.ApplicationModel;
@@ -7,7 +6,6 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using OperatorResources = ArknightsResources.Operators.Resources.Properties.Resources;
 
 namespace ArknightsToolkit
 {
@@ -71,8 +69,6 @@ namespace ArknightsToolkit
                 // 确保当前窗口处于活动状态
                 Window.Current.Activate();
             }
-
-            OperatorResourceHelper.Instance.ResourceManager = OperatorResources.ResourceManager;
         }
 
         /// <summary>

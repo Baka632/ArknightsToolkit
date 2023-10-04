@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace ArknightsToolkit.Helper
 {
-    static class NavigationHelper
+    internal static class NavigationHelper
     {
         public static Frame CurrentFrame { get; set; }
         public static SystemNavigationManager NavigationManager { get; } = SystemNavigationManager.GetForCurrentView();

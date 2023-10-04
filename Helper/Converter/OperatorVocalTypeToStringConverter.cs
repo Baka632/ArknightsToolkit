@@ -15,18 +15,18 @@ namespace ArknightsToolkit.Helper.Converter
         {
             switch (value)
             {
-                case OperatorVocalType type:
+                case OperatorVoiceType type:
                     switch (type)
                     {
-                        case OperatorVocalType.ChineseMandarin:
+                        case OperatorVoiceType.ChineseMandarin:
                             return "中文普通话";
-                        case OperatorVocalType.ChineseRegional:
+                        case OperatorVoiceType.ChineseRegional:
                             return "中文方言";
-                        case OperatorVocalType.Japanese:
+                        case OperatorVoiceType.Japanese:
                             return "日语";
-                        case OperatorVocalType.English:
+                        case OperatorVoiceType.English:
                             return "英语";
-                        case OperatorVocalType.Korean:
+                        case OperatorVoiceType.Korean:
                             return "韩语";
                         default:
                             return DependencyProperty.UnsetValue;

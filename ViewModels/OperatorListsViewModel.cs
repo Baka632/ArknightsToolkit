@@ -1,6 +1,4 @@
-﻿using ArknightsResources.Operators;
-using ArknightsResources.Operators.Models;
-using ArknightsResources.Operators.Resources;
+﻿using ArknightsResources.Operators.Models;
 using ArknightsResources.Utility;
 using ArknightsToolkit.Commands;
 using ArknightsToolkit.Helper;
@@ -12,6 +10,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
+using OperatorTextResources = ArknightsResources.Operators.TextResources.Properties.Resources;
 
 namespace ArknightsToolkit.ViewModels
 {
@@ -70,7 +69,7 @@ namespace ArknightsToolkit.ViewModels
 
             NavigateToOperatorDetailsCommand = new DelegateCommand((object obj) =>
             {
-                NavigationHelper.Navigate(typeof(OperatorDetails), obj, new SuppressNavigationTransitionInfo());
+                NavigationHelper.Navigate(typeof(OperatorDetails), obj);
             });
         }
 
@@ -78,10 +77,12 @@ namespace ArknightsToolkit.ViewModels
         {
             if (OperatorsList is null)
             {
+
                 ObservableCollection<Operator> oc = await Task.Run(async () =>
                 {
-                    OperatorsList operatorsList = await OperatorResourceHelper.Instance.GetAllOperatorsAsync(CultureInfo.DefaultThreadCurrentUICulture);
-                    return new ObservableCollection<Operator>(operatorsList.ToArray());
+                    OperatorTextResourceHelper operatorResourceHelper = new OperatorTextResourceHelper(OperatorTextResources.ResourceManager);
+                    System.Collections.Immutable.ImmutableDictionary<string, Operator> operatorsList = await operatorResourceHelper.GetAllOperatorsAsync(CultureInfo.DefaultThreadCurrentUICulture);
+                    return new ObservableCollection<Operator>(operatorsList.Values);
                 });
                 OperatorsList = new AdvancedCollectionView(oc, true);
                 OperatorsList.SortDescriptions.Add(new SortDescription("Name", SortDirection.Ascending));

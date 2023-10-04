@@ -161,6 +161,18 @@
                     <TextBlock Text="查看干员图鉴" />
                 </StackPanel>
             </Button>
+            <Button
+                Width="150"
+                Height="150"
+                Command="{x:Bind ViewModel.OpenSettingsCommand}">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <FontIcon
+                        FontFamily="{ThemeResource SymbolThemeFontFamily}"
+                        FontSize="70"
+                        Glyph="&#xE115;" />
+                    <TextBlock HorizontalAlignment="Center" Text="打开设置" />
+                </StackPanel>
+            </Button>
         </StackPanel>
 
         <VisualStateManager.VisualStateGroups>

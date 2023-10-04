@@ -53,12 +53,6 @@ namespace ArknightsToolkit.Helper
                 {
                     image.SaveAsPng(stream.AsStreamForWrite());
                     stream.Seek(0);
-                    //BitmapImage img = MainPage.DispatcherQueue.EnqueueAsync(async () =>
-                    // {
-                    //     BitmapImage bmp = new BitmapImage();
-                    //     await bmp.SetSourceAsync(stream);
-                    //     return bmp;
-                    // }).Result;
                     BitmapImage bmp = new BitmapImage();
                     bmp.SetSource(stream);
                     return bmp;

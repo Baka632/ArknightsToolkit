@@ -33,7 +33,7 @@ namespace ArknightsToolkit.Views
     {
         private OperatorListsViewModel ViewModel { get; set; }
 
-        private Operator _storeditem = null;
+        private Operator? _storeditem = null;
 
         public OperatorLists()
         {
@@ -54,41 +54,37 @@ namespace ArknightsToolkit.Views
 
         private void OnItemClick(object sender, ItemClickEventArgs e)
         {
-            if (OperatorListGridView.ContainerFromItem(e.ClickedItem) is GridViewItem container)
-            {
-                _storeditem = (Operator)container.Content;
-            }
+            //if (OperatorListGridView.ContainerFromItem(e.ClickedItem) is GridViewItem container)
+            //{
+            //    _storeditem = (Operator)container.Content;
+            //    _ = OperatorListGridView.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "OperatorImage");
+            //}
             ViewModel.NavigateToOperatorDetailsCommand.Execute((Operator)e.ClickedItem);
-        }
-
-        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
-            if (_storeditem != null && e.NavigationMode != NavigationMode.Back)
-            {
-                _ = OperatorListGridView.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "OperatorImage");
-            }
         }
 
         private async void OperatorListGridView_Loaded(object sender, RoutedEventArgs e)
         {
-            if (_storeditem != null)
-            {
-                // If the connected item appears outside the viewport, scroll it into view.
-                OperatorListGridView.ScrollIntoView(_storeditem, ScrollIntoViewAlignment.Default);
-                OperatorListGridView.UpdateLayout();
+            //if (!(_storeditem is null))
+            //{
+            //    // If the connected item appears outside the viewport, scroll it into view.
+            //    OperatorListGridView.ScrollIntoView(_storeditem, ScrollIntoViewAlignment.Default);
+            //    OperatorListGridView.UpdateLayout();
 
-                // Play the second connected animation. 
-                ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("BackConnectedAnimation");
-                if (animation != null)
-                {
-                    if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
-                    {
-                        animation.Configuration = new DirectConnectedAnimationConfiguration();
-                    }
+            //    // Play the second connected animation. 
+            //    ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("BackConnectedAnimation");
+            //    if (animation != null)
+            //    {
+            //        if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
+            //        {
+            //            animation.Configuration = new DirectConnectedAnimationConfiguration();
+            //        }
 
-                    _ = await OperatorListGridView.TryStartConnectedAnimationAsync(animation, _storeditem, "OperatorImage");
-                }
-            }
+            //        _ = await OperatorListGridView.TryStartConnectedAnimationAsync(animation, _storeditem, "OperatorImage");
+            //    }
+
+            //    OperatorListGridView.Focus(FocusState.Programmatic);
+            //}
+
             await ViewModel.InitCollection();
         }
 

@@ -31,17 +31,17 @@ namespace ArknightsToolkit.Views
         {
             base.OnNavigatedTo(e);
             ViewModel.CurrentOperator = (Operator)e.Parameter;
-            ConnectedAnimation imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("ForwardConnectedAnimation");
-            if (imageAnimation != null)
-            {
-                _ = imageAnimation.TryStart(OperatorImage, new UIElement[] { operatorImageScrollViewer });
-            }
+            //ConnectedAnimation imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("ForwardConnectedAnimation");
+            //if (imageAnimation != null)
+            //{
+            //    _ = imageAnimation.TryStart(OperatorImage, new UIElement[] { operatorImageScrollViewer });
+            //}
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            _ = ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("BackConnectedAnimation", OperatorImage);
             base.OnNavigatingFrom(e);
+            //_ = ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("BackConnectedAnimation", OperatorImage);
         }
 
         private async void OperatorImage_Loaded(object sender, RoutedEventArgs e)

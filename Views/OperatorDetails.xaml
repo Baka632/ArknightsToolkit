@@ -331,7 +331,7 @@
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate x:DataType="models:OperatorVoiceInfo">
                                             <TextBlock HorizontalAlignment="Left" Style="{StaticResource BaseTextBlockStyle}">
-                                                <Run Text="{x:Bind Voice}" />
+                                                <Run Text="{x:Bind Voices[0]}" />
                                                 <Run Text="(" />
                                                 <Run Text="{x:Bind Type, Converter={StaticResource OpVocalTypeToStringConverter}}" />
                                                 <Run Text=")" />
